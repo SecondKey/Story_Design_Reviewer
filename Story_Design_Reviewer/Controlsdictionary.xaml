@@ -1,0 +1,52 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Story_Design_Reviewer">
+
+    <!--#region -->
+    <Style x:Key="InspectListBox" TargetType="ListBox">
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
+        <Setter Property="DataContext" Value="{Binding ElementName=main, Path=DataContext}"/>
+        <Setter Property="BorderBrush" Value="Black"/>
+        <Setter Property="ItemContainerStyle">
+            <Setter.Value>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type ListBoxItem}">
+                                <Border x:Name="border" CornerRadius="0" Margin="2" BorderBrush="Black" Opacity="0.5"
+                                        BorderThickness="0,0,0,0.2">
+                                    <DockPanel Width="{Binding RelativeSource={RelativeSource AncestorType=ListBox}, Path=ActualWidth}" LastChildFill="True"  Height="30">
+                                        <TextBlock Margin="0,0,10,0" DockPanel.Dock="Right" FontSize="12" Text="{Binding ErrorElementName}"/>
+                                        <Grid>
+                                            <TextBlock TextTrimming="CharacterEllipsis"  Margin="1" FontSize="12" Text="{Binding ErrorText}"/>
+                                        </Grid>
+                                    </DockPanel>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Foreground" Value="white" />
+                                        <Setter TargetName="border" Property="Background" Value="white" />
+                                        <Setter TargetName="border" Property="BorderBrush" Value="black" />
+                                        <Setter TargetName="border" Property="Opacity" Value="0.5" />
+                                        <Setter TargetName="border" Property="BorderThickness" Value="1" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="InspectListBorder" TargetType="Border">
+        <Setter Property="BorderBrush">
+            <Setter.Value>
+                <SolidColorBrush Color="black" Opacity="0.5"/>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="CornerRadius" Value="5"/>
+    </Style>
+    <!--#endregion-->
+</ResourceDictionary>

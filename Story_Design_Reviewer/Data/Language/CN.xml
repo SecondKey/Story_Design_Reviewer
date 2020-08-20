@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CN>
+  <Window_Name>MainWindow</Window_Name>
+
+  <Menu_File>菜单</Menu_File>
+  <Menu_File_New>新建</Menu_File_New>
+  <Menu_File_Open>打开</Menu_File_Open>
+  <Menu_Edit>编辑</Menu_Edit>
+  <Menu_Project>项目</Menu_Project>
+
+  <ErrorPage_Tab_Error>错误</ErrorPage_Tab_Error>
+  <ErrorPage_Tab_Conflict>冲突</ErrorPage_Tab_Conflict>
+  <ErrorPage_Tab_Prompt>提示</ErrorPage_Tab_Prompt>
+  <ErrorPage_Tab_TODO>代办</ErrorPage_Tab_TODO>
+
+  <WorkingArea_Title_TimeShaft>时间轴</WorkingArea_Title_TimeShaft>
+  <WorkingArea_Title_Role>人物</WorkingArea_Title_Role>
+  <WorkingArea_Title_Event>事件</WorkingArea_Title_Event>
+  <WorkingArea_Title_AttributeAndThing>属性-物品</WorkingArea_Title_AttributeAndThing>
+
+
+
+
+
+  <ErrorText_ErrorPath>错误位置：</ErrorText_ErrorPath>
+
+  <Error_LostMotivation>角色行为缺少动机：</Error_LostMotivation>
+  <ErrorInfo_LostMotivation>
+    <ElementName>角色：</ElementName>
+    <End>的行为缺少必要的动机！</End>
+  </ErrorInfo_LostMotivation>
+
+  <Inspect_EventName>事件：</Inspect_EventName>
+</CN>

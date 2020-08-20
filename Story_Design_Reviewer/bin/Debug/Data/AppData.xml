@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<AppData>
+  <Informatino>
+  </Informatino>
+  <Settings>
+    <Language>CN</Language>
+    <LayOut>
+      <ErrorPage>
+        <Width>400</Width>
+      </ErrorPage>
+      <WorkingArea>
+      </WorkingArea>
+      <InspectePage>
+        <Width>400</Width>
+      </InspectePage>
+    </LayOut>
+  </Settings>
+  <LoadPath>
+    <Language/>
+  </LoadPath>
+</AppData>
