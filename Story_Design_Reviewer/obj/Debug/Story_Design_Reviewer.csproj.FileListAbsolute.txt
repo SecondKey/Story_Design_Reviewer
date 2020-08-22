@@ -35,7 +35,10 @@ D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Dat
 D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Data\Language\EN.xml
 D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ErrorListPanel.g.cs
 D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
-D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Controls\Controlsdictionary.baml
 D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ErrorListPanel.baml
 D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\InspectPage.g.cs
 D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\InspectPage.baml
+D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\EventInspectPanel.g.cs
+D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Controlsdictionary.baml
+D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\EventInspectPanel.baml
+D:\StoryDesignReviewer\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Themes\Generic.baml

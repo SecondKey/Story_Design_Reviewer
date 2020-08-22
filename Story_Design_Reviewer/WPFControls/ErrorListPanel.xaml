@@ -25,9 +25,8 @@
                                         BorderThickness="0,0,0,0.2">
                                         <DockPanel Width="{Binding RelativeSource={RelativeSource AncestorType=DockPanel}, Path=ActualWidth}" LastChildFill="True"  Height="30">
                                             <TextBlock Margin="0,0,10,0" DockPanel.Dock="Right" FontSize="12" Text="{Binding ErrorElementName}"/>
-                                            <Grid>
-                                                <TextBlock TextTrimming="CharacterEllipsis"  Margin="1" FontSize="12" Text="{Binding ErrorText}"/>
-                                            </Grid>
+                                            <TextBlock TextTrimming="CharacterEllipsis"  Margin="1" FontSize="12" Text="{Binding ErrorText}"/>
+
                                         </DockPanel>
                                     </Border>
                                     <ControlTemplate.Triggers>

@@ -9,14 +9,26 @@
     <StackPanel Background="White">
         <Border Style="{StaticResource InspectListBorder}">
             <TextBlock Text="name"/>
+        </Border >
+        <Border Margin="0,10,0,0" Style="{StaticResource InspectListBorder}" >
+            <Expander ExpandDirection="Down" IsExpanded="True">
+                <ListBox Style="{StaticResource ResourceKey=InspectListBox}">
+                    <ListBoxItem Content="123"/>
+                    <ListBoxItem Content="123"/>
+                    <ListBoxItem Content="123"/>
+                    <ListBoxItem Content="123"/>
+                </ListBox>
+            </Expander>
         </Border>
         <Border>
-            <ListBox Style="{StaticResource ResourceKey=InspectListBox}">
-
-            </ListBox>
-        </Border>
-        <Border>
-            
+            <Expander ExpandDirection="Down" Header="123" IsExpanded="True">
+                <ListBox Style="{StaticResource ResourceKey=InspectListBox}">
+                    <ListBoxItem Content="123"/>
+                    <ListBoxItem Content="123"/>
+                    <ListBoxItem Content="123"/>
+                    <ListBoxItem Content="123"/>
+                </ListBox>
+            </Expander>
         </Border>
     </StackPanel>
 </UserControl>

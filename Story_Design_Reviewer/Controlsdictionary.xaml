@@ -2,7 +2,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Story_Design_Reviewer">
 
-    <!--#region -->
+    <!--#region inspect-->
     <Style x:Key="InspectListBox" TargetType="ListBox">
         <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
         <Setter Property="DataContext" Value="{Binding ElementName=main, Path=DataContext}"/>
