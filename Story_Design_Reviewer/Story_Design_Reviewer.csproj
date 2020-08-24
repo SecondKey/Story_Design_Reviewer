@@ -86,13 +86,17 @@
     <Compile Include="Models\Error\ErrorElementModel.cs" />
     <Compile Include="Models\ProcessElement.cs" />
     <Compile Include="Models\ProcessNodeElement.cs" />
+    <Compile Include="ResourcesDictionaryEvents.cs" />
+    <Compile Include="ViewModel\AppDataViewModel.cs" />
     <Compile Include="ViewModel\ErrorPageViewModel.cs" />
     <Compile Include="ViewModel\InspectViewModel.cs" />
+    <Compile Include="ViewModel\InspectView\EventInspectViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="Controls\RWXml.cs" />
     <Compile Include="ViewModel\ElementNodeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelInterface\IPretreatmentEvents.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WorkingAreaViewModel.cs" />
     <Compile Include="WPFControls\ErrorListPanel.xaml.cs">
       <DependentUpon>ErrorListPanel.xaml</DependentUpon>
     </Compile>
@@ -107,6 +111,9 @@
     </Compile>
     <Compile Include="WPFControls\ProcessEventNode.xaml.cs">
       <DependentUpon>ProcessEventNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="WPFControls\WorkingArea.xaml.cs">
+      <DependentUpon>WorkingArea.xaml</DependentUpon>
     </Compile>
     <Page Include="Controlsdictionary.xaml">
       <SubType>Designer</SubType>
@@ -129,8 +136,8 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Themes\Generic.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WPFControls\ErrorListPanel.xaml">
       <SubType>Designer</SubType>
@@ -149,6 +156,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="WPFControls\ProcessEventNode.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WPFControls\WorkingArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -197,6 +208,9 @@
     <None Include="Data\Language\EN.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

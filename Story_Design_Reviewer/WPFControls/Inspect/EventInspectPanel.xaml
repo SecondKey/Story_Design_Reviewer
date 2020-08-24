@@ -5,30 +5,54 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Story_Design_Reviewer.WPFControls.Inspect"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="400">
-    <StackPanel Background="White">
-        <Border Style="{StaticResource InspectListBorder}">
-            <TextBlock Text="name"/>
-        </Border >
-        <Border Margin="0,10,0,0" Style="{StaticResource InspectListBorder}" >
-            <Expander ExpandDirection="Down" IsExpanded="True">
-                <ListBox Style="{StaticResource ResourceKey=InspectListBox}">
-                    <ListBoxItem Content="123"/>
-                    <ListBoxItem Content="123"/>
-                    <ListBoxItem Content="123"/>
-                    <ListBoxItem Content="123"/>
-                </ListBox>
+             d:DesignHeight="600" d:DesignWidth="400"
+             Name="main"
+             DataContext="{Binding Source={StaticResource Locator}, Path=EventInspectPage}">
+    <DockPanel LastChildFill="True">
+        <Control Name="AppTextDataContext" DataContext="{Binding Source={StaticResource Locator}, Path=AppData}"/>
+        <Border DockPanel.Dock="Bottom" BorderThickness="0,4,0,0">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="Black" Opacity="0.3"/>
+            </Border.BorderBrush>
+            <Expander IsExpanded="True" ExpandDirection="Up" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding AppDataText[InspectEvent_EventInfo]}">
+                <TextBox FontSize="15" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" MaxHeight="200">
+                    asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
+                </TextBox>
             </Expander>
         </Border>
-        <Border>
-            <Expander ExpandDirection="Down" Header="123" IsExpanded="True">
-                <ListBox Style="{StaticResource ResourceKey=InspectListBox}">
-                    <ListBoxItem Content="123"/>
-                    <ListBoxItem Content="123"/>
-                    <ListBoxItem Content="123"/>
-                    <ListBoxItem Content="123"/>
-                </ListBox>
+        <Border DockPanel.Dock="Bottom" BorderThickness="0,4,0,0">
+            <Border.BorderBrush>
+                <SolidColorBrush Color="Black" Opacity="0.3"/>
+            </Border.BorderBrush>
+            <Expander IsExpanded="True" ExpandDirection="Up">
+                <Expander.Header>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock DockPanel.Dock="Right" Text="123123"/>
+                        <TextBlock Margin="10,0,0,0" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Text="{Binding AppDataText[InspectEvent_EventInfo]}"/>
+                    </StackPanel>
+                </Expander.Header>
+                <TextBox FontSize="15" TextWrapping="Wrap" IsReadOnly="True" VerticalScrollBarVisibility="Auto" MaxHeight="200">
+                    asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
+                </TextBox>
             </Expander>
         </Border>
-    </StackPanel>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Border Style="{StaticResource InspectListBorder}">
+                    <local:InspectItem ItemKey="姓名" ItemValue="123" AllowModify="True"/>
+                </Border >
+                <Border Margin="0,10,0,0" Style="{StaticResource InspectListBorder}" >
+                    <Expander ExpandDirection="Down" IsExpanded="True" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding AppDataText[InspectCommon_Hierarchy]}">
+                        <ListBox BorderThickness="0" Style="{StaticResource ResourceKey=InspectItemsControl}" DataContext="{Binding ElementName=main, Path=DataContext}" ItemsSource="{Binding EventHierarchy}"/>
+                    </Expander>
+                </Border>
+                <Border  Margin="0,10,0,0" Style="{StaticResource InspectListBorder}">
+                    <Expander ExpandDirection="Down" IsExpanded="True" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding AppDataText[InspectCommon_Contain]}">
+                        <ListBox BorderThickness="0" Style="{StaticResource ResourceKey=InspectItemsControl}" DataContext="{Binding ElementName=main, Path=DataContext}" ItemsSource="{Binding EventContain}"/>
+                    </Expander>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
 </UserControl>

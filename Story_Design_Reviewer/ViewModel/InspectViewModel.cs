@@ -15,6 +15,13 @@ using System.Windows.Markup;
 
 namespace Story_Design_Reviewer.ViewModel
 {
+    public struct InspectItemStruct
+    {
+        public string ItemKey { get; set; }
+        public string ItemValue { get; set; }
+        public bool AllowModify { get; set; }
+    }
+
     public class InspectViewModel : ViewModelBase
     {
         InspectPage inspectPage;
@@ -50,7 +57,7 @@ namespace Story_Design_Reviewer.ViewModel
             StackPanel infoList = new StackPanel();
 
             Border eventName = (Border)inspectPage.FindResource("ReadOnlyText");
-            ((TextBlock)eventName.FindName("RKey")).SetBinding(TextBlock.TextProperty, ViewModelLocator.instence.MainWindow.AppDataText["Inspect_EventName"]);
+            ((TextBlock)eventName.FindName("RKey")).SetBinding(TextBlock.TextProperty, ViewModelLocator.instence.AppData.AppDataText["InspectEvent_EventName"]);
             ((TextBlock)eventName.FindName("RKey")).Text = "123";
 
             ((IAddChild)infoList).AddChild(eventName);

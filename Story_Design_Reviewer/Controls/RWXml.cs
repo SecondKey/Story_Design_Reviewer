@@ -27,13 +27,14 @@ namespace Story_Design_Reviewer.RW
                 instence = new RWXml();
                 instence.LoadData();
             }
+
             return instence;
         }
         #endregion
 
         void LoadData()
         {
-            string path = ViewModelLocator.instence.MainWindow.AppPath + "Data/";
+            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Data/";
             AppMsgCenter.SendMsg(new MsgDebugText(AllAppMsg.ShowDebugText, DebugTools.DebugList.RW, DebugTools.DebugType.Log, path));
 
             XDocument AppData = XDocument.Load(path + "AppData.xml");
@@ -47,6 +48,7 @@ namespace Story_Design_Reviewer.RW
                     allAppXml.Add(folder + "_" + Path.GetFileNameWithoutExtension(f.Name), xDoc);
                 }
             }
+
         }
 
 
@@ -54,7 +56,6 @@ namespace Story_Design_Reviewer.RW
         public string GetOneElement(params string[] parameters)
         {
             LogParameter(parameters);
-
             XElement e = allAppXml[parameters[0]].Root;
             for (int i = 1; i < parameters.Length; i++)
             {

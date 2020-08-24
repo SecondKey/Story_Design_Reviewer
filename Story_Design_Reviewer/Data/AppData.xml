@@ -6,12 +6,12 @@
     <Language>CN</Language>
     <LayOut>
       <ErrorPage>
-        <Width>400</Width>
+        <Width>250</Width>
       </ErrorPage>
       <WorkingArea>
       </WorkingArea>
       <InspectePage>
-        <Width>400</Width>
+        <Width>250</Width>
       </InspectePage>
     </LayOut>
   </Settings>

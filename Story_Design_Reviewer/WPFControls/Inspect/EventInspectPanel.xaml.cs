@@ -32,6 +32,8 @@ namespace Story_Design_Reviewer.WPFControls.Inspect
         public static DependencyProperty eventStartTime;
         public static DependencyProperty eventEndTime;
 
+        
+
         public string EventName
         {
             get { return (string)GetValue(eventName); }
@@ -59,24 +61,11 @@ namespace Story_Design_Reviewer.WPFControls.Inspect
 
         static EventInspectPanel()
         {
-            eventName = DependencyProperty.Register("EventName", typeof(string), typeof(EventInspectPanel), new FrameworkPropertyMetadata("", new PropertyChangedCallback(OnNameChanged)));
+            eventName = DependencyProperty.Register("EventName", typeof(string), typeof(EventInspectPanel));
             eventName = DependencyProperty.Register("eventTimeType", typeof(string), typeof(EventInspectPanel));
-            eventStartTime = DependencyProperty.Register("EventStartTime", typeof(string), typeof(EventInspectPanel), new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnStartTimeChanged)));
-            eventEndTime = DependencyProperty.Register("EventEndTime", typeof(string), typeof(EventInspectPanel), new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnEndTimeChanged)));
-        }
-
-        private static void OnNameChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-            EventInspectPanel panel = (EventInspectPanel)sender;
-            string t = panel.EventName;
-        }
-        private static void OnStartTimeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-
-        }
-        private static void OnEndTimeChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
-        {
-
+            eventStartTime = DependencyProperty.Register("EventStartTime", typeof(string), typeof(EventInspectPanel));
+            eventEndTime = DependencyProperty.Register("EventEndTime", typeof(string), typeof(EventInspectPanel));
+            //eventEndTime = DependencyProperty.Register("EventEndTime", typeof(string), typeof(EventInspectPanel), new FrameworkPropertyMetadata(0, new PropertyChangedCallback(OnEndTimeChanged)));
         }
     }
 

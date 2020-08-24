@@ -13,14 +13,6 @@
   <ErrorPage_Tab_Prompt>提示</ErrorPage_Tab_Prompt>
   <ErrorPage_Tab_TODO>代办</ErrorPage_Tab_TODO>
 
-  <WorkingArea_Title_TimeShaft>时间轴</WorkingArea_Title_TimeShaft>
-  <WorkingArea_Title_Role>人物</WorkingArea_Title_Role>
-  <WorkingArea_Title_Event>事件</WorkingArea_Title_Event>
-  <WorkingArea_Title_AttributeAndThing>属性-物品</WorkingArea_Title_AttributeAndThing>
-
-
-
-
 
   <ErrorText_ErrorPath>错误位置：</ErrorText_ErrorPath>
 
@@ -30,5 +22,18 @@
     <End>的行为缺少必要的动机！</End>
   </ErrorInfo_LostMotivation>
 
-  <Inspect_EventName>事件：</Inspect_EventName>
+
+  <WorkingArea_Title_TimeShaft>时间轴</WorkingArea_Title_TimeShaft>
+  <WorkingArea_Title_Event>事件</WorkingArea_Title_Event>
+  <WorkingArea_Title_Map>地图</WorkingArea_Title_Map>
+  <WorkingArea_Title_Role>人物/阵营</WorkingArea_Title_Role>
+  <WorkingArea_Title_AttributeAndThing>属性/物品/其他</WorkingArea_Title_AttributeAndThing>
+  <WorkingArea_TimeLine_EventNode>事件节点</WorkingArea_TimeLine_EventNode>
+  
+  
+  <InspectCommon_Hierarchy>层级</InspectCommon_Hierarchy>
+  <InspectCommon_Contain>包含</InspectCommon_Contain>
+
+  <InspectEvent_EventName>事件：</InspectEvent_EventName>
+  <InspectEvent_EventInfo>事件信息</InspectEvent_EventInfo>
 </CN>

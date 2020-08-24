@@ -3,6 +3,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Story_Design_Reviewer.DebugTools;
 using Story_Design_Reviewer.WPFControls;
+using Story_Design_Reviewer.ViewModel.InspectView;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
@@ -17,10 +18,17 @@ namespace Story_Design_Reviewer.ViewModel
         {
             instence = this;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
-            SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<DebugTools.DebugViewModel>();
+            SimpleIoc.Default.Register<AppDataViewModel>();
+
+
+            SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<ErrorPageViewModel>();
             SimpleIoc.Default.Register<InspectViewModel>();
+            SimpleIoc.Default.Register<WorkingAreaViewModel>();
+            #region Inspect
+            SimpleIoc.Default.Register<EventInspectViewModel>();
+            #endregion 
         }
 
         #region µ¥Àý
@@ -29,6 +37,7 @@ namespace Story_Design_Reviewer.ViewModel
         {
             { "MainWindow",false },
             { "DebugWindow",false},
+            { "AppData",false},
         };
         #endregion
 
@@ -36,13 +45,7 @@ namespace Story_Design_Reviewer.ViewModel
         {
             get
             {
-                MainWindowViewModel instence = ServiceLocator.Current.GetInstance<MainWindowViewModel>();
-                if (!HasInstence["MainWindow"])
-                {
-                    HasInstence["MainWindow"] = true;
-                    instence.PretreatmentEvents();
-                }
-                return instence;
+                return ServiceLocator.Current.GetInstance<MainWindowViewModel>();
             }
         }
 
@@ -69,6 +72,7 @@ namespace Story_Design_Reviewer.ViewModel
         }
 
         public InspectPage inspectPageInstence;
+
         public InspectViewModel InspectPage
         {
             get
@@ -76,6 +80,38 @@ namespace Story_Design_Reviewer.ViewModel
                 return ServiceLocator.Current.GetInstance<InspectViewModel>();
             }
         }
+
+        public WorkingAreaViewModel WorkingAreaPage
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<WorkingAreaViewModel>();
+            }
+        }
+
+        public AppDataViewModel AppData
+        {
+            get
+            {
+                AppDataViewModel instence = ServiceLocator.Current.GetInstance<AppDataViewModel>();
+                if (!HasInstence["AppData"])
+                {
+                    HasInstence["AppData"] = true;
+                    instence.PretreatmentEvents();
+                }
+                return instence;
+            }
+        }
+
+        #region Inspect
+        public EventInspectViewModel EventInspectPage
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<EventInspectViewModel>();
+            }
+        }
+        #endregion
 
         public static void Cleanup()
         {

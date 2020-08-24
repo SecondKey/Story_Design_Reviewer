@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Story_Design_Reviewer.WPFControls"
+             xmlns:Inspect="clr-namespace:Story_Design_Reviewer.WPFControls.Inspect"
              mc:Ignorable="d" 
              d:DesignHeight="800" d:DesignWidth="400"
              Name="main"
@@ -25,29 +26,7 @@
             </DockPanel>
         </Border>
     </UserControl.Resources>
-    <DockPanel Background="White" LastChildFill="True">
-        <Border DockPanel.Dock="Bottom" BorderThickness="0,4,0,0">
-            <Border.BorderBrush>
-                <SolidColorBrush Color="Black" Opacity="0.3"/>
-            </Border.BorderBrush>
-            <Expander IsExpanded="True" ExpandDirection="Up">
-                <TextBox FontSize="15" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsReadOnly="True"  Height="200">
-                    asdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdfasdf
-                </TextBox>
-            </Expander>
-        </Border>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <StackPanel Name="Panel" Orientation="Vertical">
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-                <ListBoxItem Template="{StaticResource ReadWriteText}"/>
-            </StackPanel>
-        </ScrollViewer>
+    <DockPanel LastChildFill="True">
+        <Inspect:EventInspectPanel />
     </DockPanel>
 </UserControl>

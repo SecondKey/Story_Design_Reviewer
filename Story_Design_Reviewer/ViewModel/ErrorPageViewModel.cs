@@ -15,7 +15,7 @@ namespace Story_Design_Reviewer.ViewModel
     {
         public ErrorPageViewModel()
         {
-            Models.ProcessElement p1 = new Models.ProcessElement("博丽灵梦博丽灵梦", null);
+            Models.ProcessElement p1 = new Models.ProcessElement("博丽灵梦博丽灵梦博丽灵梦博丽灵梦博丽灵梦博丽灵梦", null);
             Models.ProcessElement p2 = new Models.ProcessElement("p2", p1);
             Models.ProcessElement p3 = new Models.ProcessElement("p3", p2);
             ErrorList.Add(new ErrorElementModel(ErrorType.LostMotivation, p1));
@@ -198,7 +198,6 @@ namespace Story_Design_Reviewer.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    Debug.Print("123");
                     Models.ProcessElement p123 = new Models.ProcessElement("p123", null);
                     ErrorList.Add(new ErrorElementModel(ErrorType.LostMotivation, p123));
                 });

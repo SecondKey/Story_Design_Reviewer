@@ -9,17 +9,21 @@
         xmlns:WPFControls="clr-namespace:Story_Design_Reviewer.WPFControls"
         mc:Ignorable="d"
         Name="window"
-        
         Title="Story_Design_Reviewer"
-        Height="900" Width="1600" MinHeight="600" MinWidth="1000"
+        Height="450" Width="800" MinHeight="600" MinWidth="1000"
         DataContext="{Binding Source={StaticResource Locator}, Path=MainWindow}">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
             <mvvm:EventToCommand Command="{Binding ClearFocus}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
+
+    <Window.Resources>
+
+    </Window.Resources>
+
     <Grid>
-        <Label Name="AppTextDataContext"></Label>
+        <Control Name="AppTextDataContext" DataContext="{Binding Source={StaticResource Locator}, Path=AppData}"/>
         <DockPanel LastChildFill="True">
             <!--#region 菜单 工具 状态 -->
             <Menu DockPanel.Dock="Top"  DataContext="{Binding ElementName=AppTextDataContext,Path=DataContext}"  >
@@ -45,7 +49,7 @@
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                     <ColumnDefinition ></ColumnDefinition>
                     <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition MinWidth="200"  MaxWidth="400" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Width="{Binding Path=InsPectePageWidth}"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="250"  MaxWidth="400" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Width="{Binding Path=InsPectePageWidth}"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
                 <GridSplitter Background="Black" Opacity="0.3"  Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="4"/>
@@ -54,39 +58,9 @@
                 <!--#region 错误面板-->
                 <WPFControls:ErrorListPanel/>
                 <!--#endregion-->
+                <WPFControls:WorkingArea x:Name="WorkingArea" Grid.Column="2"/>
                 <!--#region 工作面板-->
-                <TabControl Name="WorkingArea" Grid.Column="2" FontSize="15">
-                    <!--<TabControl.ItemContainerStyle>
-                        <Style TargetType="TabItem">
-                            <Setter Property="Visibility" Value="Collapsed"></Setter>
-                        </Style>
-                    </TabControl.ItemContainerStyle>-->
-                    <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_TimeShaft]}">
-                        <Canvas Name="canvas">
-                            <WrapPanel HorizontalAlignment="Left" Orientation="Vertical">
-                                <Expander ExpandDirection="Right" Header="节点" Width="200">
-                                    <Grid Background="Black" Opacity="0.3">
-                                        <ScrollViewer Grid.Row="0" Margin="1" VerticalScrollBarVisibility="Auto" Height="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type Canvas}},Path=ActualHeight}" Grid.RowSpan="3">
-                                            <UniformGrid  Columns="1" Height="800" VerticalAlignment="Top">
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                                <Button Width="100" Height="80"/>
-                                            </UniformGrid>
-                                        </ScrollViewer>
-                                    </Grid>
-                                </Expander >
-                            </WrapPanel>
-                        </Canvas>
-                    </TabItem>
-                    <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_Role]}"/>
-                    <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_Event]}"/>
-                    <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_AttributeAndThing]}"/>
-                </TabControl>
+                
                 <!--#endregion-->
 
                 <!--#region 检视面板-->
