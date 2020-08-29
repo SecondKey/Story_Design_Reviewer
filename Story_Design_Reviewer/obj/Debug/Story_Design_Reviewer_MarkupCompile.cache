@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\App.xaml
-10-430438177
+11882377485
 
-362020489914
-1221146818457
-Controlsdictionary.xaml;DebugTools\DebugWindow.xaml;MainWindow.xaml;Themes\Generic.xaml;WPFControls\ErrorListPanel.xaml;WPFControls\InspectPage.xaml;WPFControls\Inspect\EventInspectPanel.xaml;WPFControls\Inspect\InspectItem.xaml;WPFControls\ProcessEventNode.xaml;WPFControls\WorkingArea.xaml;
+37-393559359
+1231647851778
+Controlsdictionary.xaml;DebugTools\DebugWindow.xaml;MainWindow.xaml;Themes\Generic.xaml;WPFControls\ErrorListPanel.xaml;WPFControls\InspectPage.xaml;WPFControls\Inspect\Element\InspectExpander.xaml;WPFControls\Inspect\EventInspectPanel.xaml;WPFControls\Inspect\Element\InspectItem.xaml;WPFControls\ProcessEventNode.xaml;WPFControls\WorkingArea.xaml;
 
 False
 

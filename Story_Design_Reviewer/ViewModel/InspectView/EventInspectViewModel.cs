@@ -3,27 +3,43 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Story_Design_Reviewer.ViewModel.InspectView
 {
-    public class EventInspectViewModel : ViewModelBase
+    public class EventInspectViewModel : DataViewModelBase
     {
+
+
         public EventInspectViewModel()
         {
+
             EventHierarchy.Add(new InspectItemStruct { ItemKey = "项目名1", ItemValue = "项目说明", AllowModify = true });
             EventHierarchy.Add(new InspectItemStruct { ItemKey = "项目名2", ItemValue = "项目说明", AllowModify = true });
             EventHierarchy.Add(new InspectItemStruct { ItemKey = "项目名3", ItemValue = "项目说明", AllowModify = false });
-            
-            
+
             EventContain.Add(new InspectItemStruct { ItemKey = "项目名1", ItemValue = "项目说明123", AllowModify = true });
             EventContain.Add(new InspectItemStruct { ItemKey = "项目名2", ItemValue = "项目说明123", AllowModify = false });
             EventContain.Add(new InspectItemStruct { ItemKey = "项目名3", ItemValue = "项目说明", AllowModify = true });
             EventContain.Add(new InspectItemStruct { ItemKey = "项目名4", ItemValue = "项目说明", AllowModify = false });
+
         }
 
-        private ObservableCollection<InspectItemStruct> eventHierarchy=new ObservableCollection<InspectItemStruct>();
+        #region EventCommonState
+        private string eventName;
+        public string EventName
+        {
+            get { return eventName; }
+            set { eventName = value; RaisePropertyChanged(() => EventHierarchy); }
+        }
+
+
+        #endregion
+
+        #region ListState
+        private ObservableCollection<InspectItemStruct> eventHierarchy = new ObservableCollection<InspectItemStruct>();
         public ObservableCollection<InspectItemStruct> EventHierarchy
         {
             get { return eventHierarchy; }
@@ -34,7 +50,7 @@ namespace Story_Design_Reviewer.ViewModel.InspectView
             }
         }
 
-        private ObservableCollection<InspectItemStruct> eventContain=new ObservableCollection<InspectItemStruct>();
+        private ObservableCollection<InspectItemStruct> eventContain = new ObservableCollection<InspectItemStruct>();
         public ObservableCollection<InspectItemStruct> EventContain
         {
             get { return eventContain; }
@@ -44,7 +60,6 @@ namespace Story_Design_Reviewer.ViewModel.InspectView
                 RaisePropertyChanged(() => EventContain);
             }
         }
-
-
+        #endregion
     }
 }

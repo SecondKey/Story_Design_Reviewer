@@ -1,4 +1,4 @@
-﻿<Window x:Class="Story_Design_Reviewer.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,65 +7,71 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:Story_Design_Reviewer"
         xmlns:WPFControls="clr-namespace:Story_Design_Reviewer.WPFControls"
+        xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Story_Design_Reviewer.MainWindow"
         mc:Ignorable="d"
-        Name="window"
+        x:Name="window"
         Title="Story_Design_Reviewer"
-        Height="450" Width="800" MinHeight="600" MinWidth="1000"
+        Height="450" Width="800" MinHeight="600" MinWidth="1000" Background="#F1EDED"
         DataContext="{Binding Source={StaticResource Locator}, Path=MainWindow}">
+    <Window.Resources>
+    </Window.Resources>
+
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="MouseDown">
             <mvvm:EventToCommand Command="{Binding ClearFocus}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Window.Resources>
-
-    </Window.Resources>
-
     <Grid>
-        <Control Name="AppTextDataContext" DataContext="{Binding Source={StaticResource Locator}, Path=AppData}"/>
-        <DockPanel LastChildFill="True">
+        <DockPanel LastChildFill="True" >
             <!--#region 菜单 工具 状态 -->
-            <Menu DockPanel.Dock="Top"  DataContext="{Binding ElementName=AppTextDataContext,Path=DataContext}"  >
-                <MenuItem Name="Menu_File" Header="{Binding Path=AppDataText[Menu_File]}">
-                    <MenuItem Name="Menu_File_New" Header="{Binding Path=AppDataText[Menu_File_New]}" />
-                    <MenuItem Name="Menu_File_Open" Header="{Binding Path=AppDataText[Menu_File_Open]}" />
+            <Menu DockPanel.Dock="Top">
+                <MenuItem x:Name="Menu_File" Header="{Binding AppDataText[Menu_File]}">
+                    <MenuItem x:Name="Menu_File_New" Header="{Binding AppDataText[Menu_File_New]}" />
+                    <MenuItem x:Name="Menu_File_Open" Header="{Binding AppDataText[Menu_File_Open]}" />
                 </MenuItem>
-                <MenuItem Name="Menu_Edit"  Header="{Binding Path=AppDataText[Menu_Edit]}" />
-                <MenuItem Name="Menu_Project"  Header="{Binding Path=AppDataText[Menu_Project]}" />
+                <MenuItem x:Name="Menu_Edit"  Header="{Binding AppDataText[Menu_Edit]}" />
+                <MenuItem x:Name="Menu_Project"  Header="{Binding AppDataText[Menu_Project]}" />
             </Menu>
-            <ToolBar DockPanel.Dock="Top">
-            </ToolBar>
+            <ToolBarTray DockPanel.Dock="Top" Background="Black">
+                <ToolBar Style="{DynamicResource MainToolBarStyle}">
+                    <Button Background="Black"></Button>
+                    <Button Background="Black"></Button>
+                </ToolBar>
+                <ToolBar Style="{DynamicResource MainToolBarStyle}"/>
+            </ToolBarTray>
             <StatusBar DockPanel.Dock="Bottom">
-                <Label HorizontalAlignment="Left" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Content="{Binding Path=test}"/>
+                <Label HorizontalAlignment="Left" Content="{Binding AppDataText[Test]}"/>
             </StatusBar>
 
             <!--#endregion-->
 
-            <Grid Name="MainGrid">
+            <Grid x:Name="MainGrid" Margin="4,0,4,0" Background="White">
                 <!--#region 布局-->
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition MinWidth="200" MaxWidth="400" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Width="{Binding Path=ErrorPageWidth}"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition ></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition MinWidth="250"  MaxWidth="400" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Width="{Binding Path=InsPectePageWidth}"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="100" MaxWidth="400" Width="{Binding LayOutSettings[ErrorPage_Width]}"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition />
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition MinWidth="250"  MaxWidth="400" Width="{Binding LayOutSettings[InspectePage_Width]}"/>
                 </Grid.ColumnDefinitions>
 
-                <GridSplitter Background="Black" Opacity="0.3"  Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="4"/>
-                <GridSplitter Background="Black" Opacity="0.3" Grid.Column="3" VerticalAlignment="Stretch" HorizontalAlignment="Center" Width="4"/>
+                <GridSplitter Grid.Column="1" Style="{StaticResource VerticalSplitter}"/>
+                <GridSplitter Grid.Column="3" Style="{StaticResource VerticalSplitter}"/>
                 <!--#endregion-->
                 <!--#region 错误面板-->
-                <WPFControls:ErrorListPanel/>
-                <!--#endregion-->
-                <WPFControls:WorkingArea x:Name="WorkingArea" Grid.Column="2"/>
-                <!--#region 工作面板-->
-                
+
+                <WPFControls:ErrorListPanel />
                 <!--#endregion-->
 
-                <!--#region 检视面板-->
-                <WPFControls:InspectPage x:Name="InspectPage"  Grid.Column="4"/>
                 <!--#endregion-->
+
+                <!--#endregion-->
+                <!--#region 工作面板-->
+                <WPFControls:WorkingArea  Grid.Column="2" x:Name="WorkingArea"  Margin="-1"/>
+
+                <!--#region 检视面板-->
+                <WPFControls:InspectPage Grid.Column="4"/>
             </Grid>
         </DockPanel>
     </Grid>

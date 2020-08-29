@@ -36,7 +36,7 @@
                         <Setter Property="Template">
                             <Setter.Value>
                                 <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Width="100" Height="70" Name="border" BorderThickness="0,0.2,0,0.2" BorderBrush="Black" >
+                                    <Border Width="100" Height="70" Name="border" BorderThickness="0,0,0,1" BorderBrush="#ACACAC" >
                                         <Button Margin="10,10,10,10" Content="123"/>
                                     </Border>
                                 </ControlTemplate>
@@ -47,25 +47,24 @@
             </Setter>
             <EventSetter Event="PreviewMouseWheel" Handler="ListBox_Answers_PreviewMouseWheel"/>
         </Style>
+
     </Control.Resources>
-    <Grid>
-        <Control Name="AppTextDataContext" DataContext="{Binding Source={StaticResource Locator}, Path=AppData}"/>
-        <TabControl FontSize="15">
+    <Border Style="{StaticResource PageBorder}">
+        <TabControl FontSize="15" Margin="-1">
             <!--<TabControl.ItemContainerStyle>
                         <Style TargetType="TabItem">
                             <Setter Property="Visibility" Value="Collapsed"></Setter>
                         </Style>
                     </TabControl.ItemContainerStyle>-->
-            <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_TimeShaft]}">
-                <DockPanel LastChildFill="True">
-
+            <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_TimeShaft]}" Style="{StaticResource TabItemStyle}">
+                <DockPanel LastChildFill="True" Margin="-2">
                     <TabControl TabStripPlacement="Left">
                         <TabItem>
                             <TabItem.Header>
-                                <TextBlock Height="10" Style="{StaticResource TabItemText}" DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Text="{Binding Path=AppDataText[WorkingArea_TimeLine_EventNode]}" />
+                                <TextBlock Height="10" Style="{StaticResource TabItemText}" Text="{Binding Path=AppDataText[WorkingArea_TimeLine_EventNode]}" />
                             </TabItem.Header>
-                            <ScrollViewer Style="{StaticResource ElementScrollViewer}">
-                                <ListBox Width="120" Style="{StaticResource ElementList}" DataContext="{Binding ElementName=main, Path=DataContext}" ItemsSource="{Binding TestList}"/>
+                            <ScrollViewer Style="{StaticResource ElementScrollViewer}" HorizontalScrollBarVisibility="Disabled">
+                                <ListBox Width="110" Style="{StaticResource ElementList}" ItemsSource="{Binding TestList}" BorderThickness="0"/>
                             </ScrollViewer>
                         </TabItem>
                     </TabControl >
@@ -73,10 +72,10 @@
                     </Canvas>
                 </DockPanel>
             </TabItem>
-            <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_Event]}"/>
-            <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_Map]}"/>
-            <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_Role]}"/>
-            <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[WorkingArea_Title_AttributeAndThing]}"/>
+            <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_Event]}" Style="{DynamicResource TabItemStyle}"/>
+            <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_Map]}" Style="{DynamicResource TabItemStyle}"/>
+            <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_Role]}" Style="{DynamicResource TabItemStyle}"/>
+            <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_AttributeAndThing]}" Style="{DynamicResource TabItemStyle}"/>
         </TabControl>
-    </Grid>
+    </Border>
 </UserControl>

@@ -2,19 +2,20 @@
 <AppData>
   <Informatino>
   </Informatino>
+
   <Settings>
     <Language>CN</Language>
     <LayOut>
-      <ErrorPage>
-        <Width>250</Width>
-      </ErrorPage>
-      <WorkingArea>
-      </WorkingArea>
-      <InspectePage>
-        <Width>250</Width>
-      </InspectePage>
+      <ErrorPage_Width>250</ErrorPage_Width>
+
+      <InspectePage_Width>250</InspectePage_Width>
     </LayOut>
+
+    <AppColor>
+      <MainColor>#FFFFFF</MainColor>
+    </AppColor>
   </Settings>
+
   <LoadPath>
     <Language/>
   </LoadPath>

@@ -7,13 +7,12 @@
              xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
              xmlns:local="clr-namespace:Story_Design_Reviewer.WPFControls" xmlns:command="http://www.galasoft.ch/mvvmlight"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800"
+             d:DesignHeight="600" d:DesignWidth="400"
              Name="main"
              DataContext="{Binding Source={StaticResource Locator}, Path=ErrorPage}">
     <UserControl.Resources>
         <Style x:Key="ErrorListBox" TargetType="ListBox">
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Hidden"/>
-            <Setter Property="DataContext" Value="{Binding ElementName=main, Path=DataContext}"/>
             <Setter Property="BorderBrush" Value="Black"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="ItemContainerStyle">
@@ -59,33 +58,28 @@
         </Style>
     </UserControl.Resources>
 
-    <Grid>
-        <Control Name="AppTextDataContext" DataContext="{Binding Source={StaticResource Locator}, Path=AppData}"/>
+    <Grid Name="ErrorGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="50"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
 
-        <DockPanel Name="ErrorPage" LastChildFill="True" >
-            <!--#region 显示错误具体信息-->
-            <DockPanel Height="300" DockPanel.Dock="Bottom" LastChildFill="True">
-                <ToolBar DockPanel.Dock="Bottom"/>
-                <TextBlock Text="{Binding ErrorInformation,Mode=TwoWay}"/>
-            </DockPanel>
-            <Rectangle DockPanel.Dock="Bottom" Opacity="0.3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Fill="Black" Height="4" Width="Auto" />
-            <!--#endregion-->
-
-            <!--#region 错误列表-->
-            <TabControl Name="TabControl" DataContext="{Binding ElementName=main, Path=DataContext}" SelectedIndex="{Binding Path=SelectList}">
-                <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[ErrorPage_Tab_Error]}" >
+        <!--#region 错误列表-->
+        <Border  Grid.Row="0" Style="{StaticResource PageBorder}">
+            <TabControl Name="TabControl" SelectedIndex="{Binding Path=SelectList}" Margin="-1">
+                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Error]}" Style="{StaticResource TabItemStyle}" >
                     <DockPanel LastChildFill="True">
                         <ToolBar DockPanel.Dock="Top">
                             <Button Content="123"/>
                         </ToolBar>
-                        <Button DockPanel.Dock="Bottom" Content="测试" DataContext="{Binding ElementName=main, Path=DataContext}" Command="{Binding TestCommand}"/>
                         <ListBox Style="{StaticResource ErrorListBox}"
                                  ItemsSource="{Binding Path=ErrorList}"
                                  SelectedIndex="{Binding SelectedError, Mode=TwoWay}">
                         </ListBox>
                     </DockPanel>
                 </TabItem>
-                <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[ErrorPage_Tab_Prompt]}">
+                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Prompt]}" Style="{StaticResource TabItemStyle}">
                     <DockPanel LastChildFill="True">
                         <ToolBar DockPanel.Dock="Top">
                             <Button Content="123"/>
@@ -96,7 +90,7 @@
                         </ListBox>
                     </DockPanel>
                 </TabItem>
-                <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[ErrorPage_Tab_Conflict]}">
+                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Conflict]}" Style="{StaticResource TabItemStyle}">
                     <DockPanel LastChildFill="True">
                         <ToolBar DockPanel.Dock="Top">
                             <Button Content="123"/>
@@ -107,7 +101,7 @@
                         </ListBox>
                     </DockPanel>
                 </TabItem>
-                <TabItem DataContext="{Binding ElementName=AppTextDataContext, Path=DataContext}" Header="{Binding Path=AppDataText[ErrorPage_Tab_TODO]}">
+                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_TODO]}" Style="{StaticResource TabItemStyle}">
                     <DockPanel LastChildFill="True">
                         <ToolBar DockPanel.Dock="Top">
                             <Button Content="123"/>
@@ -119,7 +113,25 @@
                     </DockPanel>
                 </TabItem>
             </TabControl>
-            <!--#endregion-->
-        </DockPanel>
+        </Border>
+        <!--#endregion-->
+
+        <GridSplitter Grid.Row="1" Style="{StaticResource HorizontalSplitter}"/>
+
+        <!--#region 显示错误具体信息-->
+        <Border Grid.Row="2" Style="{StaticResource PageBorder}">
+            <DockPanel LastChildFill="True">
+                <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
+                    <ToolBar>
+                        
+                    </ToolBar>
+                </ToolBarTray>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"  Margin="3">
+                    <TextBlock Text="{Binding ErrorInformation,Mode=TwoWay}"/>
+                </ScrollViewer>
+            </DockPanel>
+
+        </Border>
+        <!--#endregion-->
     </Grid>
 </UserControl>

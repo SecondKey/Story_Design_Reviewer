@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Story_Design_Reviewer.WPFControls.Inspect
+namespace Story_Design_Reviewer.WPFControls.Inspect.Element
 {
     /// <summary>
     /// InspectItem.xaml 的交互逻辑
@@ -28,7 +28,7 @@ namespace Story_Design_Reviewer.WPFControls.Inspect
 
         public static DependencyProperty itemKey;
         public static DependencyProperty itemValue;
-        public static DependencyProperty allowModify;
+        public static DependencyProperty itemAllowModify;
 
         public string ItemKey
         {
@@ -42,23 +42,23 @@ namespace Story_Design_Reviewer.WPFControls.Inspect
             set { SetValue(itemValue, value); }
         }
 
-        public bool AllowModify
+        public bool ItemAllowModify
         {
-            get { return (bool)GetValue(allowModify); }
-            set { SetValue(allowModify, value); }
+            get { return (bool)GetValue(itemAllowModify); }
+            set { SetValue(itemAllowModify, value); }
         }
 
         static InspectItem()
         {
             itemKey = DependencyProperty.Register("ItemKey", typeof(string), typeof(InspectItem));
             itemValue = DependencyProperty.Register("ItemValue", typeof(string), typeof(InspectItem));
-            allowModify = DependencyProperty.Register("AllowModify", typeof(bool), typeof(InspectItem), new FrameworkPropertyMetadata(false, new PropertyChangedCallback(SetAllowModify)));
+            itemAllowModify = DependencyProperty.Register("ItemAllowModify", typeof(bool), typeof(InspectItem), new FrameworkPropertyMetadata(false, new PropertyChangedCallback(SetAllowModify)));
         }
 
         static void SetAllowModify(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             InspectItem item = (InspectItem)sender;
-            if (item.AllowModify)
+            if (item.ItemAllowModify)
             {
                 item.ValueText.BorderThickness = new Thickness(2);
             }

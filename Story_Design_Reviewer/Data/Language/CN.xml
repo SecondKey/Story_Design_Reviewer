@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <CN>
+  <Test>测试</Test>
+  
   <Window_Name>MainWindow</Window_Name>
 
   <Menu_File>菜单</Menu_File>

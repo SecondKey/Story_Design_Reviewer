@@ -19,8 +19,6 @@ namespace Story_Design_Reviewer.ViewModel
             instence = this;
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
             SimpleIoc.Default.Register<DebugTools.DebugViewModel>();
-            SimpleIoc.Default.Register<AppDataViewModel>();
-
 
             SimpleIoc.Default.Register<MainWindowViewModel>();
             SimpleIoc.Default.Register<ErrorPageViewModel>();
@@ -86,20 +84,6 @@ namespace Story_Design_Reviewer.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<WorkingAreaViewModel>();
-            }
-        }
-
-        public AppDataViewModel AppData
-        {
-            get
-            {
-                AppDataViewModel instence = ServiceLocator.Current.GetInstance<AppDataViewModel>();
-                if (!HasInstence["AppData"])
-                {
-                    HasInstence["AppData"] = true;
-                    instence.PretreatmentEvents();
-                }
-                return instence;
             }
         }
 

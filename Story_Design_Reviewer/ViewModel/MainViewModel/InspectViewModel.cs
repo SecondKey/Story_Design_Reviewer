@@ -22,7 +22,7 @@ namespace Story_Design_Reviewer.ViewModel
         public bool AllowModify { get; set; }
     }
 
-    public class InspectViewModel : ViewModelBase
+    public class InspectViewModel : DataViewModelBase
     {
         InspectPage inspectPage;
         StackPanel inspectStackPanel;
@@ -57,7 +57,7 @@ namespace Story_Design_Reviewer.ViewModel
             StackPanel infoList = new StackPanel();
 
             Border eventName = (Border)inspectPage.FindResource("ReadOnlyText");
-            ((TextBlock)eventName.FindName("RKey")).SetBinding(TextBlock.TextProperty, ViewModelLocator.instence.AppData.AppDataText["InspectEvent_EventName"]);
+            ((TextBlock)eventName.FindName("RKey")).SetBinding(TextBlock.TextProperty, AppDataText["InspectEvent_EventName"]);
             ((TextBlock)eventName.FindName("RKey")).Text = "123";
 
             ((IAddChild)infoList).AddChild(eventName);

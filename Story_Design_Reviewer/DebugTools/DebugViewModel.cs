@@ -33,7 +33,7 @@ namespace Story_Design_Reviewer.DebugTools
         #region 单例
         public DebugViewModel()
         {
-            AppMsgCenter.RegistSelf(this, AllAppMsg.ShowDebugText, DebugLogText<AppMsg>);
+            AppMsgCenter.RegistSelf(this, AllAppMsg.ShowDebugText, DebugLogText<MsgBase>);
         }
 
         public void PretreatmentEvents()
@@ -43,7 +43,7 @@ namespace Story_Design_Reviewer.DebugTools
         }
         #endregion
 
-        void DebugLogText<T>(AppMsg msg)
+        void DebugLogText<T>(MsgBase msg)
         {
             MsgDebugText tmpMsg = (MsgDebugText)msg;
             IAddChild pannel = (StackPanel)debugWindow.FindName(string.Format("T{0}P{1}", (int)tmpMsg.list, (int)tmpMsg.type));

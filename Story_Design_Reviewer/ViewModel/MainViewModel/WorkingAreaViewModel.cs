@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Story_Design_Reviewer.ViewModel
 {
-    public class WorkingAreaViewModel:ViewModelBase
+    public class WorkingAreaViewModel: DataViewModelBase
     {
         #region test
         private ObservableCollection<string> testList = new ObservableCollection<string>()

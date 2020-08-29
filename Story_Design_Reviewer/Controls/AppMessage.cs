@@ -13,28 +13,28 @@ namespace Story_Design_Reviewer
 {
     public class AppMsgCenter
     {
-        public static void SendMsg(AppMsg tmp)
+        public static void SendMsg(MsgBase tmp)
         {
-            Messenger.Default.Send<AppMsg>(tmp, tmp.msg);
+            Messenger.Default.Send<MsgBase>(tmp, tmp.msg);
         }
 
-        public static void RegistSelf(object target, AllAppMsg msg, Action<AppMsg> action)
+        public static void RegistSelf(object target, AllAppMsg msg, Action<MsgBase> action)
         {
             Messenger.Default.Register(target, msg, action);
         }
     }
 
-    public class AppMsg
+    public class MsgBase
     {
         public AllAppMsg msg;
 
-        public AppMsg(AllAppMsg msg)
+        public MsgBase(AllAppMsg msg)
         {
             this.msg = msg;
         }
     }
 
-    public class MsgDebugText : AppMsg
+    public class MsgDebugText : MsgBase
     {
         public DebugList list;
         public DebugType type;
@@ -49,7 +49,7 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgInt : AppMsg
+    public class MsgInt : MsgBase
     {
         public int parameter;
 
@@ -59,7 +59,7 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgString : AppMsg
+    public class MsgString : MsgBase
     {
         public string parameter;
 
@@ -69,7 +69,7 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgError : AppMsg
+    public class MsgError : MsgBase
     {
         public ErrorType errorType;
 
@@ -80,7 +80,7 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgElementOptions : AppMsg
+    public class MsgElementOptions : MsgBase
     {
         public ProcessElement targetElement;
 

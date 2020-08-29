@@ -5,8 +5,9 @@ FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\DebugTools\DebugWindow.xaml
 FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\MainWindow.xaml;;
 FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\ErrorListPanel.xaml;;
 FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\InspectPage.xaml;;
+FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\Inspect\Element\InspectExpander.xaml;;
 FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\Inspect\EventInspectPanel.xaml;;
-FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\Inspect\InspectItem.xaml;;
+FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\Inspect\Element\InspectItem.xaml;;
 FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\ProcessEventNode.xaml;;
 FD:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\WPFControls\WorkingArea.xaml;;
 

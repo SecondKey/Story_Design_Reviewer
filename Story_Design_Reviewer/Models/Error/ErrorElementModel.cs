@@ -1,6 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
 using Story_Design_Reviewer.Models;
-using Story_Design_Reviewer.RW;
 using Story_Design_Reviewer.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -31,13 +30,13 @@ namespace Story_Design_Reviewer
 
         string ErrorTypeText(ErrorType type)
         {
-            return RWXml.GetInstence().GetOneElement("Language_" + ViewModelLocator.instence.AppData.Language, "Error_" + type.ToString());
+            return RWXml.GetInstence().GetOneElement("Language_" + AppDataCenter.GetInstence().Language, "Error_" + type.ToString());
         }
 
         string ErrorInfoText(ErrorType type)
         {
             string info = "";
-            foreach (var kv in RWXml.GetInstence().GetOneLayerAllElement("Language_" + ViewModelLocator.instence.AppData.Language, "ErrorInfo_" + type.ToString()))
+            foreach (var kv in RWXml.GetInstence().GetOneLayerAllElement("Language_" + AppDataCenter.GetInstence().Language, "ErrorInfo_" + type.ToString()))
             {
                 info = info + kv.Value + GetElementInfo(kv.Key);
             }
@@ -50,7 +49,7 @@ namespace Story_Design_Reviewer
             }
 
             string tmp = info + "\n\n"
-                    + RWXml.GetInstence().GetOneElement("Language_" + ViewModelLocator.instence.AppData.Language, "ErrorText_ErrorPath")
+                    + RWXml.GetInstence().GetOneElement("Language_" + AppDataCenter.GetInstence().Language, "ErrorText_ErrorPath")
                     + "\n"
                     + path;
             return tmp;

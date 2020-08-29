@@ -9,24 +9,5 @@
              d:DesignHeight="800" d:DesignWidth="400"
              Name="main"
              DataContext="{Binding Source={StaticResource Locator}, Path=InspectPage}">
-    <UserControl.Resources>
-        <ControlTemplate x:Key="ReadWriteText" TargetType="ListBoxItem">
-            <Border BorderBrush="Red">
-                <DockPanel LastChildFill="true" Margin="10,0,10,0" Height="100">
-                    <TextBlock Name="RWKey" VerticalAlignment="Center" FontSize="15" DockPanel.Dock="Left" Width="80" Text="事件"/>
-                    <TextBox Name="RWValue" VerticalAlignment="Center" FontSize="15" TextAlignment="Right" Text="0-15-654-78-15-21-8-54-"/>
-                </DockPanel>
-            </Border>
-        </ControlTemplate>
-
-        <Border  x:Key="ReadOnlyText" BorderBrush="Red">
-            <DockPanel LastChildFill="true" Margin="10,0,10,0" Height="40">
-                <TextBlock Name="RKey" VerticalAlignment="Center" FontSize="15" DockPanel.Dock="Left" Width="80" Text="事件"/>
-                <TextBlock Name="RValue" VerticalAlignment="Center" FontSize="15" TextAlignment="Right" Text="0-15-654-78-15-21-8-54-"/>
-            </DockPanel>
-        </Border>
-    </UserControl.Resources>
-    <DockPanel LastChildFill="True">
-        <Inspect:EventInspectPanel />
-    </DockPanel>
+    <Inspect:EventInspectPanel />
 </UserControl>

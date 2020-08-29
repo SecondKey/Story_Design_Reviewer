@@ -1,5 +1,4 @@
 ﻿using Story_Design_Reviewer.DebugTools;
-using Story_Design_Reviewer.RW;
 using Story_Design_Reviewer.ViewModel;
 using Story_Design_Reviewer.WPFControls;
 using System;
@@ -31,5 +30,6 @@ namespace Story_Design_Reviewer
             InitializeComponent();
             
         }
+
     }
 }

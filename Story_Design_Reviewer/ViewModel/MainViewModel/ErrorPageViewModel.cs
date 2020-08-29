@@ -11,7 +11,7 @@ using System.Windows.Controls;
 
 namespace Story_Design_Reviewer.ViewModel
 {
-    public class ErrorPageViewModel : ViewModelBase
+    public class ErrorPageViewModel : DataViewModelBase
     {
         public ErrorPageViewModel()
         {
@@ -125,7 +125,7 @@ namespace Story_Design_Reviewer.ViewModel
             }
         }
 
-        private int selectedError = 0;
+        private int selectedError = -1;
         public int SelectedError
         {
             get { return selectedError; }
@@ -137,7 +137,7 @@ namespace Story_Design_Reviewer.ViewModel
             }
         }
 
-        private int selectConflict = 0;
+        private int selectConflict = -1;
         public int SelectConflict
         {
             get { return selectConflict; }
@@ -149,7 +149,7 @@ namespace Story_Design_Reviewer.ViewModel
             }
         }
 
-        private int selectPrompt = 0;
+        private int selectPrompt = -1;
         public int SelectPrompt
         {
             get { return selectPrompt; }
@@ -161,7 +161,7 @@ namespace Story_Design_Reviewer.ViewModel
             }
         }
 
-        private int selectTODO = 0;
+        private int selectTODO = -1;
         public int SelectTODO
         {
             get { return selectTODO; }

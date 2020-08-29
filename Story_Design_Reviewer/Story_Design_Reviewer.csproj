@@ -47,6 +47,7 @@
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -71,7 +72,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\AppMessage.cs" />
-    <Compile Include="Controls\AppStaticValue.cs" />
     <Compile Include="Controls\ErrorCenter.cs" />
     <Compile Include="Controls\EventTime.cs" />
     <Compile Include="DebugTools\DebugModel.cs" />
@@ -87,26 +87,30 @@
     <Compile Include="Models\ProcessElement.cs" />
     <Compile Include="Models\ProcessNodeElement.cs" />
     <Compile Include="ResourcesDictionaryEvents.cs" />
-    <Compile Include="ViewModel\AppDataViewModel.cs" />
-    <Compile Include="ViewModel\ErrorPageViewModel.cs" />
-    <Compile Include="ViewModel\InspectViewModel.cs" />
+    <Compile Include="Controls\AppDataCenter.cs" />
+    <Compile Include="ViewModel\DataViewModelBase.cs" />
+    <Compile Include="ViewModel\MainViewModel\ErrorPageViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel\InspectViewModel.cs" />
     <Compile Include="ViewModel\InspectView\EventInspectViewModel.cs" />
-    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel\MainWindowViewModel.cs" />
     <Compile Include="Controls\RWXml.cs" />
     <Compile Include="ViewModel\ElementNodeViewModel.cs" />
     <Compile Include="ViewModel\ViewModelInterface\IPretreatmentEvents.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="ViewModel\WorkingAreaViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel\WorkingAreaViewModel.cs" />
     <Compile Include="WPFControls\ErrorListPanel.xaml.cs">
       <DependentUpon>ErrorListPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFControls\InspectPage.xaml.cs">
       <DependentUpon>InspectPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WPFControls\Inspect\Element\InspectExpander.xaml.cs">
+      <DependentUpon>InspectExpander.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WPFControls\Inspect\EventInspectPanel.xaml.cs">
       <DependentUpon>EventInspectPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFControls\Inspect\InspectItem.xaml.cs">
+    <Compile Include="WPFControls\Inspect\Element\InspectItem.xaml.cs">
       <DependentUpon>InspectItem.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFControls\ProcessEventNode.xaml.cs">
@@ -147,11 +151,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="WPFControls\Inspect\Element\InspectExpander.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="WPFControls\Inspect\EventInspectPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFControls\Inspect\InspectItem.xaml">
+    <Page Include="WPFControls\Inspect\Element\InspectItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

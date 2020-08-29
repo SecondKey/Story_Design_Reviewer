@@ -2,7 +2,6 @@
 using GalaSoft.MvvmLight.Messaging;
 using GalaSoft.MvvmLight.CommandWpf;
 using Story_Design_Reviewer.DebugTools;
-using Story_Design_Reviewer.RW;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,20 +13,8 @@ using System.Collections.ObjectModel;
 
 namespace Story_Design_Reviewer.ViewModel
 {
-    public class MainWindowViewModel : ViewModelBase
+    public class MainWindowViewModel : DataViewModelBase
     {
-        #region 单例
-
-        public MainWindowViewModel()
-        {
-            //DebugViewModel debugWindow = ViewModelLocator.instence.DebugWindow;
-        }
-
-        #endregion
-
-
-
-        #region WindowToole
         private RelayCommand clearFocus;
         public RelayCommand ClearFocus
         {
@@ -37,7 +24,5 @@ namespace Story_Design_Reviewer.ViewModel
                 return clearFocus;
             }
         }
-        #endregion
-
     }
 }

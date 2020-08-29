@@ -9,7 +9,7 @@ using System.Diagnostics;
 using GalaSoft.MvvmLight.Messaging;
 using Story_Design_Reviewer.ViewModel;
 
-namespace Story_Design_Reviewer.RW
+namespace Story_Design_Reviewer
 {
     class RWXml
     {
@@ -19,22 +19,9 @@ namespace Story_Design_Reviewer.RW
 
         #region 单例
         private static RWXml instence;
-        private RWXml() { }
-        public static RWXml GetInstence()
+        private RWXml() 
         {
-            if (instence == null)
-            {
-                instence = new RWXml();
-                instence.LoadData();
-            }
-
-            return instence;
-        }
-        #endregion
-
-        void LoadData()
-        {
-            string path = System.AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Data/";
+                        string path = AppDataCenter.appPath;
             AppMsgCenter.SendMsg(new MsgDebugText(AllAppMsg.ShowDebugText, DebugTools.DebugList.RW, DebugTools.DebugType.Log, path));
 
             XDocument AppData = XDocument.Load(path + "AppData.xml");
@@ -48,8 +35,18 @@ namespace Story_Design_Reviewer.RW
                     allAppXml.Add(folder + "_" + Path.GetFileNameWithoutExtension(f.Name), xDoc);
                 }
             }
-
         }
+        public static RWXml GetInstence()
+        {
+            if (instence == null)
+            {
+                instence = new RWXml();
+            }
+
+            return instence;
+        }
+        #endregion
+
 
 
         #region AppData

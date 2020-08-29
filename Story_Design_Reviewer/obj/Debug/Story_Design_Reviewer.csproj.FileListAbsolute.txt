@@ -85,9 +85,11 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Revie
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.csproj.GenerateResource.cache
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.csproj.CoreCompileInputs.cache
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.csproj.CopyComplete
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\InspectItem.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\InspectItem.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Themes\Generic.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Controlsdictionary.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.baml
