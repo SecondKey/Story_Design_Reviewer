@@ -6,6 +6,9 @@ using System.Windows.Data;
 
 namespace Aga.Diagrams
 {
+	/// <summary>
+	/// 调试转换器
+	/// </summary>
 	[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1812:AvoidUninstantiatedInternalClasses")]
 	internal class DebuggingConverter : IValueConverter
 	{

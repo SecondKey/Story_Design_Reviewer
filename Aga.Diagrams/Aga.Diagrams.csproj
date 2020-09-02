@@ -124,6 +124,8 @@
     <Compile Include="Util\VisualHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="Controls\ClassDiagram.cd" />
     <None Include="key.snk" />
     <None Include="Migrated rules for Aga.Diagrams.ruleset" />

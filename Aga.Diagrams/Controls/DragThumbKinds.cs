@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Aga.Diagrams
 {
+	/// <summary>
+	/// 拖拽端口的样式
+	/// </summary>
 	[Flags]
 	public enum DragThumbKinds
 	{

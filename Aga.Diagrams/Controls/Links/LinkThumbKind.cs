@@ -5,6 +5,9 @@ using System.Text;
 
 namespace Aga.Diagrams.Controls
 {
+	/// <summary>
+	/// 连接端口类型（开始端口/结束端口）
+	/// </summary>
 	public enum LinkThumbKind
 	{
 		Source, Target

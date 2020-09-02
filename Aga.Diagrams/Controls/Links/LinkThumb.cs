@@ -8,11 +8,24 @@ using System.Windows.Input;
 
 namespace Aga.Diagrams.Controls
 {
+	/// <summary>
+	/// 连接的端口
+	/// </summary>
 	public class LinkThumb: Control
 	{
+		/// <summary>
+		/// 连接的端口类型（起始端口/结束端口）
+		/// </summary>
 		public LinkThumbKind Kind { get; set; }
+		/// <summary>
+		/// 鼠标点击的位置
+		/// </summary>
 		protected Point? MouseDownPoint { get; set; }
 
+		/// <summary>
+		/// 鼠标点击事件
+		/// </summary>
+		/// <param name="e"></param>
 		protected override void OnMouseDown(System.Windows.Input.MouseButtonEventArgs e)
 		{
 			if (e.ChangedButton == MouseButton.Left)

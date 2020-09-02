@@ -37,5 +37,6 @@ namespace Story_Design_Reviewer.WPFControls
                 parent.RaiseEvent(eventArg);
             }
         }
+
     }
 }

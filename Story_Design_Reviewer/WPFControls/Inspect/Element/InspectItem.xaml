@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="30" d:DesignWidth="400" Name="inspectItem">
     <DockPanel LastChildFill="True"  Margin="2">
-        <TextBox Name="ValueText" MaxWidth="350" MinWidth="150" BorderThickness="0"  DockPanel.Dock="Right" Margin="2" FontSize="11"
+        <TextBox Name="ValueText" MaxWidth="350" MinWidth="100" BorderThickness="0"  DockPanel.Dock="Right" Margin="2" FontSize="11"
                      Text="{Binding ElementName=inspectItem, Path=ItemValue}" 
                      IsEnabled="{Binding ElementName=inspectItem, Path=ItemAllowModify}"
                      VerticalContentAlignment="Center" HorizontalContentAlignment="Right"/>

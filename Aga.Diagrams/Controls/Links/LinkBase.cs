@@ -15,23 +15,31 @@ namespace Aga.Diagrams.Controls
 	{
 		#region Properties
 
-		#region CanRelink Property
-
+		#region CanRelink Property是否可以重新连接
+		/// <summary>
+		/// 是否可以重新连接
+		/// </summary>
+		public static readonly DependencyProperty CanRelinkProperty =
+			DependencyProperty.Register("CanRelink",
+							   typeof(bool),
+							   typeof(LinkBase),
+							   new FrameworkPropertyMetadata(true));
+		/// <summary>
+		/// 是否可以重新连接
+		/// </summary>
 		public bool CanRelink
 		{
 			get { return (bool)GetValue(CanRelinkProperty); }
 			set { SetValue(CanRelinkProperty, value); }
 		}
-
-		public static readonly DependencyProperty CanRelinkProperty =
-			DependencyProperty.Register("CanRelink",
-									   typeof(bool),
-									   typeof(LinkBase),
-									   new FrameworkPropertyMetadata(true));
-
 		#endregion
-
+		/// <summary>
+		/// 原端口
+		/// </summary>
 		private IPort _source;
+		/// <summary>
+		/// 原端口
+		/// </summary>
 		public IPort Source
 		{
 			get { return _source; }
@@ -45,7 +53,13 @@ namespace Aga.Diagrams.Controls
 			}
 		}
 
+		/// <summary>
+		/// 目标端口
+		/// </summary>
 		private IPort _target;
+		/// <summary>
+		/// 目标端口
+		/// </summary>
 		public IPort Target
 		{
 			get { return _target; }
@@ -59,11 +73,17 @@ namespace Aga.Diagrams.Controls
 			}
 		}
 
+		/// <summary>
+		/// 原端口位置
+		/// </summary>
 		public Point? SourcePoint { get; set; }
+		/// <summary>
+		/// 目标位置
+		/// </summary>
 		public Point? TargetPoint { get; set; }
 
-
-		private bool _startCap;
+        #region Cap
+        private bool _startCap;
 		public bool StartCap
 		{
 			get { return _startCap; }
@@ -84,15 +104,28 @@ namespace Aga.Diagrams.Controls
 				OnPropertyChanged("EndCap");
 			}
 		}
+        #endregion
 
-		private Brush _brush = new SolidColorBrush(Colors.Black);
+		/// <summary>
+		/// 连接的画刷
+		/// </summary>
+        private Brush _brush = new SolidColorBrush(Colors.Black);
+		/// <summary>
+		/// 连接的画刷
+		/// </summary>
 		public Brush Brush
 		{
 			get { return _brush; }
 			set { _brush = value; }
 		}
 
+		/// <summary>
+		/// 开始位置
+		/// </summary>
 		private Point _startPoint;
+		/// <summary>
+		/// 开始位置
+		/// </summary>
 		public Point StartPoint
 		{
 			get { return _startPoint; }
@@ -103,7 +136,13 @@ namespace Aga.Diagrams.Controls
 			}
 		}
 
+		/// <summary>
+		/// 结束位置
+		/// </summary>
 		private Point _endPoint;
+		/// <summary>
+		/// 结束位置
+		/// </summary>
 		public Point EndPoint
 		{
 			get { return _endPoint; }
@@ -113,6 +152,7 @@ namespace Aga.Diagrams.Controls
 				OnPropertyChanged("EndPoint");
 			}
 		}
+
 
 		private double _startCapAngle;
 		public double StartCapAngle
@@ -136,7 +176,13 @@ namespace Aga.Diagrams.Controls
 			}
 		}
 
+		/// <summary>
+		/// 路径图形
+		/// </summary>
 		private PathGeometry _pathGeomtry;
+		/// <summary>
+		/// 路径图形
+		/// </summary>
 		public PathGeometry PathGeometry
 		{
 			get { return _pathGeomtry; }
@@ -147,7 +193,15 @@ namespace Aga.Diagrams.Controls
 			}
 		}
 
+		#region Label Property连接标签
+
+		/// <summary>
+		/// 连接标签的位置
+		/// </summary>
 		private Point _labelPosition;
+		/// <summary>
+		/// 连接标签的位置
+		/// </summary>
 		public Point LabelPosition
 		{
 			get { return _labelPosition; }
@@ -157,20 +211,23 @@ namespace Aga.Diagrams.Controls
 				OnPropertyChanged("LabelPosition");
 			}
 		}
+		public static readonly DependencyProperty LabelProperty =
+			DependencyProperty.Register("Label", typeof(string), typeof(LinkBase));
 
-		#region Label Property
-
+		/// <summary>
+		/// 标签文本
+		/// </summary>
 		public string Label
 		{
 			get { return (string)GetValue(LabelProperty); }
 			set { SetValue(LabelProperty, value); }
 		}
 
-		public static readonly DependencyProperty LabelProperty =
-			DependencyProperty.Register("Label", typeof(string), typeof(LinkBase));
-
 		#endregion
 
+		/// <summary>
+		/// 获取从开始点到结束点的方形范围
+		/// </summary>
 		public override Rect Bounds
 		{
 			get
@@ -190,6 +247,10 @@ namespace Aga.Diagrams.Controls
 			UpdatePath();
 		}
 
+		/// <summary>
+		/// 创建选择装饰器
+		/// </summary>
+		/// <returns></returns>
 		protected override Adorner CreateSelectionAdorner()
 		{
 			return new SelectionAdorner(this, new RelinkControl());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Windows;
@@ -10,18 +11,36 @@ using Aga.Diagrams.Controls;
 
 namespace Aga.Diagrams.Tools
 {
+	/// <summary>
+	/// 输入工具类
+	/// </summary>
 	public class InputTool : IInputTool
 	{
+		/// <summary>
+		/// 对应视图界面
+		/// </summary>
 		protected DiagramView View { get; private set; }
+		/// <summary>
+		/// 对应控制器
+		/// </summary>
 		protected IDiagramController Controller { get { return View.Controller; } }
+		/// <summary>
+		/// 鼠标按下位置
+		/// </summary>
 		protected Point? MouseDownPoint { get; set; }
+		/// <summary>
+		/// 鼠标按下的元素
+		/// </summary>
 		protected DiagramItem MouseDownItem { get; set; }
 
 		public InputTool(DiagramView view)
 		{
 			View = view;
 		}
-
+		/// <summary>
+		/// 当鼠标按下时没修改按下元素和按下位置
+		/// </summary>
+		/// <param name="e"></param>
 		public virtual void OnMouseDown(MouseButtonEventArgs e)
 		{
 			MouseDownItem = (e.OriginalSource as DependencyObject).FindParent<DiagramItem>();
@@ -29,6 +48,12 @@ namespace Aga.Diagrams.Tools
 			e.Handled = true;
 		}
 
+		/// <summary>
+		/// 当鼠标移动时触发
+		/// 如果选中元素，执行拖动方法
+		/// 如果没有选中元素。创建一个选择框
+		/// </summary>
+		/// <param name="e"></param>
 		public virtual void OnMouseMove(MouseEventArgs e)
 		{
 			if (e.LeftButton == MouseButtonState.Pressed && MouseDownPoint.HasValue)
@@ -47,7 +72,10 @@ namespace Aga.Diagrams.Tools
 			}
 			e.Handled = true;
 		}
-
+		/// <summary>
+		/// 当鼠标抬起时
+		/// </summary>
+		/// <param name="e"></param>
 		public virtual void OnMouseUp(MouseButtonEventArgs e)
 		{
 			if (MouseDownPoint == null)
@@ -57,7 +85,10 @@ namespace Aga.Diagrams.Tools
 			SelectItem(item);
 			e.Handled = true;
 		}
-
+		/// <summary>
+		/// 当按键按下（Preview）
+		/// </summary>
+		/// <param name="e"></param>
 		public virtual void OnPreviewKeyDown(KeyEventArgs e)
 		{
 			if (e.Key == Key.Escape)
@@ -69,7 +100,10 @@ namespace Aga.Diagrams.Tools
 					View.Selection.Clear();
 			}
 		}
-
+		/// <summary>
+		/// 选择元素（可多选）
+		/// </summary>
+		/// <param name="item"></param>
 		protected virtual void SelectItem(DiagramItem item)
 		{
 			var sel = View.Selection;
@@ -96,7 +130,10 @@ namespace Aga.Diagrams.Tools
 					sel.Clear();
 			}
 		}
-
+		/// <summary>
+		/// 创建选框
+		/// </summary>
+		/// <returns></returns>
 		protected virtual Adorner CreateRubberbandAdorner()
 		{
 			return new RubberbandAdorner(View, MouseDownPoint.Value);

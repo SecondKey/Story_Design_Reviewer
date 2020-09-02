@@ -10,6 +10,9 @@ using Aga.Diagrams.Adorners;
 
 namespace Aga.Diagrams.Controls
 {
+	/// <summary>
+	/// 节点基类
+	/// </summary>
 	public class Node : DiagramItem, INode
 	{
 		static Node()
@@ -21,39 +24,53 @@ namespace Aga.Diagrams.Controls
 		#region Properties
 
 		#region Content Property
-
+		/// <summary>
+		/// 节点内容
+		/// </summary>
+		public static readonly DependencyProperty ContentProperty =
+			DependencyProperty.Register("Content",
+									   typeof(object),
+									   typeof(Node));
+		/// <summary>
+		/// 节点内容
+		/// </summary>
 		public object Content 
 		{
 			get { return (bool)GetValue(ContentProperty); }
 			set { SetValue(ContentProperty, value); }
 		}
-
-		public static readonly DependencyProperty ContentProperty =
-			DependencyProperty.Register("Content",
-									   typeof(object),
-									   typeof(Node));
-
 		#endregion
 
 		#region CanResize Property
-
+	    /// <summary>
+		/// 是否可以修改
+		/// </summary>
+		public static readonly DependencyProperty CanResizeProperty =
+			DependencyProperty.Register("CanResize",
+							   typeof(bool),
+							   typeof(Node),
+							   new FrameworkPropertyMetadata(true));
+		/// <summary>
+		/// 是否可以修改
+		/// </summary>
 		public bool CanResize
 		{
 			get { return (bool)GetValue(CanResizeProperty); }
 			set { SetValue(CanResizeProperty, value); }
 		}
-
-		public static readonly DependencyProperty CanResizeProperty =
-			DependencyProperty.Register("CanResize",
-									   typeof(bool),
-									   typeof(Node),
-									   new FrameworkPropertyMetadata(true));
-
 		#endregion
-
+		/// <summary>
+		/// 所有的端口
+		/// </summary>
 		private List<IPort> _ports = new List<IPort>();
+		/// <summary>
+		/// 所有的端口
+		/// </summary>
 		public ICollection<IPort> Ports { get { return _ports; } }
 
+		/// <summary>
+		/// 返回一个节点的范围
+		/// </summary>
 		public override Rect Bounds
 		{
 			get
@@ -72,12 +89,18 @@ namespace Aga.Diagrams.Controls
 		{
 		}
 
+		/// <summary>
+		/// 更新位置
+		/// </summary>
 		public void UpdatePosition()
 		{
 			foreach (var p in Ports)
 				p.UpdatePosition();
 		}
-
+		/// <summary>
+		/// 创建一个选择装饰器
+		/// </summary>
+		/// <returns></returns>
 		protected override Adorner CreateSelectionAdorner()
 		{
 			return new SelectionAdorner(this, new SelectionFrame());

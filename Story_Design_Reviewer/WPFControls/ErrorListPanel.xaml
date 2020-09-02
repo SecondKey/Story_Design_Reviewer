@@ -66,72 +66,87 @@
         </Grid.RowDefinitions>
 
         <!--#region 错误列表-->
-        <Border  Grid.Row="0" Style="{StaticResource PageBorder}">
-            <TabControl Name="TabControl" SelectedIndex="{Binding Path=SelectList}" Margin="-1">
-                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Error]}" Style="{StaticResource TabItemStyle}" >
-                    <DockPanel LastChildFill="True">
-                        <ToolBar DockPanel.Dock="Top">
-                            <Button Content="123"/>
-                        </ToolBar>
+        <TabControl Name="TabControl" SelectedIndex="{Binding Path=SelectList}">
+            <TabItem  Header="{Binding Path=AppDataText[ErrorPage_Tab_Error]}" Style="{StaticResource TabItemStyle}" >
+                <DockPanel LastChildFill="True" Margin="-3">
+                    <Border DockPanel.Dock="Top" Style="{StaticResource PageBorder}">
+                        <StackPanel Orientation="Horizontal">
+                            <Button  Content="123" BorderThickness="0,0,0.5,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Margin="0,-1,0,0" Style="{StaticResource PageBorder}">
                         <ListBox Style="{StaticResource ErrorListBox}"
                                  ItemsSource="{Binding Path=ErrorList}"
                                  SelectedIndex="{Binding SelectedError, Mode=TwoWay}">
                         </ListBox>
-                    </DockPanel>
-                </TabItem>
-                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Prompt]}" Style="{StaticResource TabItemStyle}">
-                    <DockPanel LastChildFill="True">
-                        <ToolBar DockPanel.Dock="Top">
-                            <Button Content="123"/>
-                        </ToolBar>
+                    </Border>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Prompt]}" Style="{StaticResource TabItemStyle}">
+                <DockPanel LastChildFill="True" Margin="-3">
+                    <Border DockPanel.Dock="Top" Style="{StaticResource PageBorder}">
+                        <StackPanel Orientation="Horizontal">
+                            <Button  Content="123" BorderThickness="0,0,0.5,0"/>
+
+                        </StackPanel>
+                    </Border>
+                    <Border Margin="0,-1,0,0" Style="{StaticResource PageBorder}">
                         <ListBox Style="{StaticResource ErrorListBox}"
                                  ItemsSource="{Binding Path=ConflictList}"
                                  SelectedIndex="{Binding SelectConflict , Mode=TwoWay}">
                         </ListBox>
-                    </DockPanel>
-                </TabItem>
-                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Conflict]}" Style="{StaticResource TabItemStyle}">
-                    <DockPanel LastChildFill="True">
-                        <ToolBar DockPanel.Dock="Top">
-                            <Button Content="123"/>
-                        </ToolBar>
+                    </Border>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_Conflict]}" Style="{StaticResource TabItemStyle}">
+                <DockPanel LastChildFill="True" Margin="-3">
+                    <Border DockPanel.Dock="Top" Style="{StaticResource PageBorder}">
+                        <StackPanel Orientation="Horizontal">
+                            <Button  Content="123" BorderThickness="0,0,0.5,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Margin="0,-1,0,0" Style="{StaticResource PageBorder}">
                         <ListBox Style="{StaticResource ErrorListBox}"
                                  ItemsSource="{Binding Path=PromptList}"
                                  SelectedIndex="{Binding SelectPrompt, Mode=TwoWay}">
                         </ListBox>
-                    </DockPanel>
-                </TabItem>
-                <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_TODO]}" Style="{StaticResource TabItemStyle}">
-                    <DockPanel LastChildFill="True">
-                        <ToolBar DockPanel.Dock="Top">
-                            <Button Content="123"/>
-                        </ToolBar>
+                    </Border>
+                </DockPanel>
+            </TabItem>
+            <TabItem Header="{Binding Path=AppDataText[ErrorPage_Tab_TODO]}" Style="{StaticResource TabItemStyle}">
+                <DockPanel LastChildFill="True" Margin="-3">
+                    <Border DockPanel.Dock="Top" Style="{StaticResource PageBorder}">
+                        <StackPanel Orientation="Horizontal">
+                            <Button  Content="123" BorderThickness="0,0,0.5,0"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Margin="0,-1,0,0" Style="{StaticResource PageBorder}">
                         <ListBox Style="{StaticResource ErrorListBox}"
                                  ItemsSource="{Binding Path=TODOList}"
                                  SelectedIndex="{Binding SelectTODO, Mode=TwoWay}">
                         </ListBox>
-                    </DockPanel>
-                </TabItem>
-            </TabControl>
-        </Border>
+                    </Border>
+                </DockPanel>
+            </TabItem>
+        </TabControl>
         <!--#endregion-->
 
         <GridSplitter Grid.Row="1" Style="{StaticResource HorizontalSplitter}"/>
 
         <!--#region 显示错误具体信息-->
-        <Border Grid.Row="2" Style="{StaticResource PageBorder}">
-            <DockPanel LastChildFill="True">
-                <ToolBarTray DockPanel.Dock="Top" IsLocked="True">
-                    <ToolBar>
-                        
-                    </ToolBar>
-                </ToolBarTray>
+        <DockPanel LastChildFill="True" Grid.Row="2">
+            <Border DockPanel.Dock="Top" Style="{StaticResource PageBorder}">
+                <StackPanel Orientation="Horizontal">
+                    <Button  Content="123" BorderThickness="0,0,0.5,0"/>
+
+                </StackPanel>
+            </Border>
+            <Border Margin="0,-1,0,0" Style="{StaticResource PageBorder}">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto"  Margin="3">
                     <TextBlock Text="{Binding ErrorInformation,Mode=TwoWay}"/>
                 </ScrollViewer>
-            </DockPanel>
-
-        </Border>
+            </Border>
+        </DockPanel>
         <!--#endregion-->
     </Grid>
 </UserControl>

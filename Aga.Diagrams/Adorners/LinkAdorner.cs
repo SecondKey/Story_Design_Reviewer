@@ -11,8 +11,14 @@ using Aga.Diagrams.Controls;
 
 namespace Aga.Diagrams.Adorners
 {
+	/// <summary>
+	/// 连接装饰器
+	/// </summary>
 	public class LinkAdorner : DragAdorner
 	{
+		/// <summary>
+		/// 用于绘制连接的画笔
+		/// </summary>
 		private Pen _pen;
 
 		private IPort _port;
@@ -28,19 +34,28 @@ namespace Aga.Diagrams.Adorners
 				}
 			}
 		}
-
+		/// <summary>
+		/// 连接装饰器，定义了固定是画笔实例
+		/// </summary>
+		/// <param name="view"></param>
+		/// <param name="start"></param>
 		public LinkAdorner(DiagramView view, Point start)
 			: base(view, start)
 		{
 			_pen = new Pen(new SolidColorBrush(Colors.Red), 1);
 		}
-
+		/// <summary>
+		/// 进行拖拽
+		/// </summary>
+		/// <returns></returns>
 		protected override bool DoDrag()
 		{
 			View.LinkTool.DragTo(End - Start);
 			return View.LinkTool.CanDrop();
 		}
-
+		/// <summary>
+		/// 结束拖拽
+		/// </summary>
 		protected override void EndDrag()
 		{
 			View.LinkTool.EndDrag(DoCommit);

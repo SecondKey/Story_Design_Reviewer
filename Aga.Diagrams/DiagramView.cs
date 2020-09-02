@@ -12,287 +12,417 @@ using System.Windows.Input;
 
 namespace Aga.Diagrams
 {
-	public class DiagramView : Canvas
-	{
-		private Pen _gridPen;
+    /// <summary>
+    /// 图标的视图界面
+    /// </summary>
+    public class DiagramView : Canvas
+    {
+        /// <summary>
+        /// 用于绘制网格的笔刷
+        /// </summary>
+        private Pen _gridPen;
 
-		static DiagramView()
-		{
-			FrameworkElement.DefaultStyleKeyProperty.OverrideMetadata(
-				typeof(DiagramView), new FrameworkPropertyMetadata(typeof(DiagramView)));
-		}
+        static DiagramView()
+        {
+            FrameworkElement.DefaultStyleKeyProperty.OverrideMetadata(
+                typeof(DiagramView), new FrameworkPropertyMetadata(typeof(DiagramView)));
+        }
 
-		#region Properties
+        #region Properties
 
-		#region GridCellSize
+        #region GridCellSize单元格
 
-		public static readonly DependencyProperty GridCellSizeProperty =
-			DependencyProperty.Register("GridCellSize",
-									   typeof(Size),
-									   typeof(DiagramView),
-									   new FrameworkPropertyMetadata(new Size(10, 10)));
+        /// <summary>
+        /// 单元格大小
+        /// </summary>
+        public static readonly DependencyProperty GridCellSizeProperty =
+            DependencyProperty.Register("GridCellSize",
+                                       typeof(Size),
+                                       typeof(DiagramView),
+                                       new FrameworkPropertyMetadata(new Size(10, 10)));
+        /// <summary>
+        /// 单元格大小
+        /// </summary>
+        public Size GridCellSize
+        {
+            get { return (Size)GetValue(GridCellSizeProperty); }
+            set { SetValue(GridCellSizeProperty, value); }
+        }
 
-		public Size GridCellSize
-		{
-			get { return (Size)GetValue(GridCellSizeProperty); }
-			set { SetValue(GridCellSizeProperty, value); }
-		}
+        #endregion
 
-		#endregion
+        #region ShowCell是否显示网格
+        /// <summary>
+        /// 是否显示网格
+        /// </summary>
+        public static readonly DependencyProperty ShowGridProperty =
+            DependencyProperty.Register("ShowGrid",
+                                       typeof(bool),
+                                       typeof(DiagramView),
+                                       new FrameworkPropertyMetadata(false));
+        /// <summary>
+        /// 是否显示网格
+        /// </summary>
+        public bool ShowGrid
+        {
+            get { return (bool)GetValue(ShowGridProperty); }
+            set { SetValue(ShowGridProperty, value); }
+        }
+        #endregion
 
-		#region ShowGrid
+        #region DocumentSize整张画布大小
+        /// <summary>
+        /// 整张画布大小
+        /// </summary>
+        public static readonly DependencyProperty DocumentSizeProperty =
+            DependencyProperty.Register("DocumentSize",
+                                       typeof(Size),
+                                       typeof(DiagramView),
+                                       new FrameworkPropertyMetadata(new Size(2000, 2000)));
+        /// <summary>
+        /// 整张画布大小
+        /// </summary>
+        public Size DocumentSize
+        {
+            get { return (Size)GetValue(DocumentSizeProperty); }
+            set { SetValue(DocumentSizeProperty, value); }
+        }
+        #endregion
 
-		public static readonly DependencyProperty ShowGridProperty =
-			DependencyProperty.Register("ShowGrid",
-									   typeof(bool),
-									   typeof(DiagramView),
-									   new FrameworkPropertyMetadata(false));
+        #region Zoom画布缩放
+        /// <summary>
+        /// 画布缩放
+        /// </summary>
+        public static readonly DependencyProperty ZoomProperty =
+            DependencyProperty.Register("Zoom",
+                                       typeof(double),
+                                       typeof(DiagramView),
+                                       new FrameworkPropertyMetadata(1.0, new PropertyChangedCallback(OnZoomChanged)));
 
-		public bool ShowGrid
-		{
-			get { return (bool)GetValue(ShowGridProperty); }
-			set { SetValue(ShowGridProperty, value); }
-		}
+        /// <summary>
+        /// 画布缩放
+        /// </summary>
+        public double Zoom
+        {
+            get { return (double)GetValue(ZoomProperty); }
+            set { SetValue(ZoomProperty, value); }
+        }
 
-		#endregion
+        /// <summary>
+        /// 画布缩放时执行操作
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        private static void OnZoomChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var view = d as DiagramView;
+            var zoom = (double)e.NewValue;
+            view._gridPen = view.CreateGridPen();
+            if (Math.Abs(zoom - 1) < 0.0001)
+                view.LayoutTransform = null;
+            else
+                view.LayoutTransform = new ScaleTransform(zoom, zoom);
+        }
+        #endregion
 
-		#region DocumentSize
+        /// <summary>
+        /// 选择器
+        /// </summary>
+        public Selection Selection { get; private set; }
 
-		public static readonly DependencyProperty DocumentSizeProperty =
-			DependencyProperty.Register("DocumentSize",
-									   typeof(Size),
-									   typeof(DiagramView),
-									   new FrameworkPropertyMetadata(new Size(2000, 2000)));
+        /// <summary>
+        /// 控制器
+        /// </summary>
+        public IDiagramController Controller { get; set; }
 
-		public Size DocumentSize
-		{
-			get { return (Size)GetValue(DocumentSizeProperty); }
-			set { SetValue(DocumentSizeProperty, value); }
-		}
+        /// <summary>
+        /// 所有的流程图元素
+        /// </summary>
+        public IEnumerable<DiagramItem> Items
+        {
+            get { return Children.OfType<DiagramItem>(); }
+        }
 
-		#endregion
+        /// <summary>
+        /// 输入工具
+        /// </summary>
+        private IInputTool _inputTool;
+        /// <summary>
+        /// 输入工具
+        /// </summary>
+        public IInputTool InputTool
+        {
+            get { return _inputTool; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _inputTool = value;
+            }
+        }
+        /// <summary>
+        /// 移动调整工具
+        /// </summary>
+        private IMoveResizeTool _dragTool;
+        /// <summary>
+        /// 移动调整工具
+        /// </summary>
+        public IMoveResizeTool DragTool
+        {
+            get { return _dragTool; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _dragTool = value;
+            }
+        }
 
-		#region Zoom
+        /// <summary>
+        /// 连接工具
+        /// </summary>
+        private ILinkTool _linkTool;
+        /// <summary>
+        /// 连接工具
+        /// </summary>
+        public ILinkTool LinkTool
+        {
+            get { return _linkTool; }
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException("value");
+                _linkTool = value;
+            }
+        }
 
-		public static readonly DependencyProperty ZoomProperty =
-			DependencyProperty.Register("Zoom",
-									   typeof(double),
-									   typeof(DiagramView),
-									   new FrameworkPropertyMetadata(1.0, new PropertyChangedCallback(OnZoomChanged)));
+        /// <summary>
+        /// 拖放工具
+        /// </summary>
+        public IDragDropTool DragDropTool { get; set; }
 
-		private static void OnZoomChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-		{
-			var view = d as DiagramView;
-			var zoom = (double)e.NewValue;
-			view._gridPen = view.CreateGridPen();
-			if (Math.Abs(zoom - 1) < 0.0001)
-				view.LayoutTransform = null;
-			else
-				view.LayoutTransform = new ScaleTransform(zoom, zoom);
-		}
+        /// <summary>
+        /// 拖动装饰器
+        /// </summary>
+        private Adorner _dragAdorner;
+        /// <summary>
+        /// 拖动装饰器
+        /// </summary>
+        public Adorner DragAdorner
+        {
+            get { return _dragAdorner; }
+            set
+            {
+                if (_dragAdorner != value)
+                {
+                    var adornerLayer = AdornerLayer.GetAdornerLayer(this);
+                    if (_dragAdorner != null)
+                        adornerLayer.Remove(_dragAdorner);
+                    _dragAdorner = value;
+                    if (_dragAdorner != null)
+                        adornerLayer.Add(_dragAdorner);
+                }
+            }
+        }
+        /// <summary>
+        /// 是否正在拖动
+        /// </summary>
+        public bool IsDragging { get { return DragAdorner != null; } }
 
-		public double Zoom
-		{
-			get { return (double)GetValue(ZoomProperty); }
-			set { SetValue(ZoomProperty, value); }
-		}
+        #endregion
 
-		#endregion
+        public DiagramView()
+        {
+            _gridPen = CreateGridPen();
+            Selection = new Selection();
+            InputTool = new InputTool(this);
+            DragTool = new MoveResizeTool(this);
+            LinkTool = new LinkTool(this);
+            BindCommands();
+            Focusable = true;
 
-		public Selection Selection { get; private set; }
+            this.LayoutUpdated += new EventHandler(DiagramView_LayoutUpdated);
+        }
+        /// <summary>
+        /// 更新布局（通知所有元素更新布局）
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        void DiagramView_LayoutUpdated(object sender, EventArgs e)
+        {
+            foreach (var n in this.Children.OfType<Node>())
+                n.UpdatePosition();
+        }
+        /// <summary>
+        /// 查找所有元素中第一个与传入匹配的元素
+        /// </summary>
+        /// <param name="modelElement"></param>
+        /// <returns></returns>
+        public DiagramItem FindItem(object modelElement)
+        {
+            return Items.FirstOrDefault(p => p.ModelElement == modelElement);
+        }
 
-		public IDiagramController Controller { get; set; }
+        #region 重写父类方法
+        /// <summary>
+        /// 鼠标按下
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            InputTool.OnMouseDown(e);
+            base.OnMouseDown(e);
+            Focus();
+        }
+        /// <summary>
+        /// 当鼠标移动时
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnMouseMove(MouseEventArgs e)
+        {
+            InputTool.OnMouseMove(e);
+            base.OnMouseMove(e);
+        }
+        /// <summary>
+        /// 当鼠标抬起时
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            InputTool.OnMouseUp(e);
+            base.OnMouseUp(e);
+        }
+        /// <summary>
+        /// 当鼠标按下时（Preview）
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            InputTool.OnPreviewKeyDown(e);
+            base.OnPreviewKeyDown(e);
+        }
+        /// <summary>
+        /// 当开始拖动时
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnDragEnter(DragEventArgs e)
+        {
+            if (DragDropTool != null)
+                DragDropTool.OnDragEnter(e);
+            base.OnDragEnter(e);
+        }
+        /// <summary>
+        /// 当拖动离开时时
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnDragLeave(DragEventArgs e)
+        {
+            if (DragDropTool != null)
+                DragDropTool.OnDragLeave(e);
+            base.OnDragLeave(e);
+        }
+        /// <summary>
+        /// 当拖动结束
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnDragOver(DragEventArgs e)
+        {
+            if (DragDropTool != null)
+                DragDropTool.OnDragOver(e);
+            base.OnDragOver(e);
+        }
+        /// <summary>
+        /// 拖放时
+        /// </summary>
+        /// <param name="e"></param>
+        protected override void OnDrop(DragEventArgs e)
+        {
+            if (DragDropTool != null)
+                DragDropTool.OnDrop(e);
+            base.OnDrop(e);
+        }
+        /// <summary>
+        /// 测量排列子元素需要的大小
+        /// </summary>
+        /// <param name="constraint"></param>
+        /// <returns></returns>
+        protected override Size MeasureOverride(Size constraint)
+        {
+            base.MeasureOverride(DocumentSize);
+            return DocumentSize;
+        }
+        /// <summary>
+        /// 当开始渲染时
+        /// </summary>
+        /// <param name="dc"></param>
+        protected override void OnRender(DrawingContext dc)
+        {
+            var rect = new Rect(0, 0, RenderSize.Width, RenderSize.Height);
+            dc.DrawRectangle(Background, null, rect);
+            if (ShowGrid && GridCellSize.Width > 0 && GridCellSize.Height > 0)
+                DrawGrid(dc, rect);
+        }
 
-		public IEnumerable<DiagramItem> Items
-		{
-			get { return Children.OfType<DiagramItem>(); }
-		}
+        #endregion
 
-		private IInputTool _inputTool;
-		public IInputTool InputTool
-		{
-			get { return _inputTool; }
-			set
-			{
-				if (value == null) 
-					throw new ArgumentNullException("value");
-				_inputTool = value;
-			}
-		}
+        /// <summary>
+        /// 绘制网格
+        /// </summary>
+        /// <param name="dc"></param>
+        /// <param name="rect"></param>
+        protected virtual void DrawGrid(DrawingContext dc, Rect rect)
+        {
+            //using .5 forces wpf to draw a single pixel line
+            for (var i = 0.5; i < rect.Height; i += GridCellSize.Height)
+                dc.DrawLine(_gridPen, new Point(0, i), new Point(rect.Width, i));
+            for (var i = 0.5; i < rect.Width; i += GridCellSize.Width)
+                dc.DrawLine(_gridPen, new Point(i, 0), new Point(i, rect.Height));
+        }
 
-		private IMoveResizeTool _dragTool;
-		public IMoveResizeTool DragTool
-		{
-			get { return _dragTool; }
-			set
-			{
-				if (value == null)
-					throw new ArgumentNullException("value");
-				_dragTool = value;
-			}
-		}
+        /// <summary>
+        /// 动态生成绘制笔刷（子类重写）
+        /// </summary>
+        /// <returns></returns>
+        protected virtual Pen CreateGridPen()
+        {
+            return new Pen(Brushes.LightGray, (1 / Zoom));
+        }
 
-		private ILinkTool _linkTool;
-		public ILinkTool LinkTool
-		{
-			get { return _linkTool; }
-			set
-			{
-				if (value == null)
-					throw new ArgumentNullException("value");
-				_linkTool = value;
-			}
-		}
+        /// <summary>
+        /// 绑定命令
+        /// </summary>
+        private void BindCommands()
+        {
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Cut, ExecuteCommand, CanExecuteCommand));
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, ExecuteCommand, CanExecuteCommand));
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, ExecuteCommand, CanExecuteCommand));
+            CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete, ExecuteCommand, CanExecuteCommand));
+        }
 
-		public IDragDropTool DragDropTool { get; set; }
+        /// <summary>
+        /// 执行方法
+        /// 如果有控制器，则控制器执行操作，
+        /// 如果操作时删除，清空选择
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExecuteCommand(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (Controller != null)
+                Controller.ExecuteCommand(e.Command, e.Parameter);
+            if (e.Command == ApplicationCommands.Delete)
+                Selection.Clear();
+        }
 
-		private Adorner _dragAdorner;
-		public Adorner DragAdorner
-		{
-			get { return _dragAdorner; }
-			set
-			{
-				if (_dragAdorner != value)
-				{
-					var adornerLayer = AdornerLayer.GetAdornerLayer(this);
-					if (_dragAdorner != null)
-						adornerLayer.Remove(_dragAdorner);
-					_dragAdorner = value;
-					if (_dragAdorner != null)
-						adornerLayer.Add(_dragAdorner);
-				}
-			}
-		}
-
-		public bool IsDragging { get { return DragAdorner != null; } }
-
-		#endregion
-
-		public DiagramView()
-		{
-			_gridPen = CreateGridPen();
-			Selection = new Selection();
-			InputTool = new InputTool(this);
-			DragTool = new MoveResizeTool(this);
-			LinkTool = new LinkTool(this);
-			BindCommands();
-			Focusable = true;
-
-			this.LayoutUpdated += new EventHandler(DiagramView_LayoutUpdated);
-		}
-
-		void DiagramView_LayoutUpdated(object sender, EventArgs e)
-		{
-			foreach (var n in this.Children.OfType<Node>())
-				n.UpdatePosition();
-		}
-
-		public DiagramItem FindItem(object modelElement)
-		{
-			return Items.FirstOrDefault(p => p.ModelElement == modelElement);
-		}
-
-		protected override void OnMouseDown(MouseButtonEventArgs e)
-		{
-			InputTool.OnMouseDown(e);
-			base.OnMouseDown(e);
-			Focus();
-		}
-
-		protected override void OnMouseMove(MouseEventArgs e)
-		{
-			InputTool.OnMouseMove(e);
-			base.OnMouseMove(e);
-		}
-
-		protected override void OnMouseUp(MouseButtonEventArgs e)
-		{
-			InputTool.OnMouseUp(e);
-			base.OnMouseUp(e);
-		}
-
-		protected override void OnPreviewKeyDown(KeyEventArgs e)
-		{
-			InputTool.OnPreviewKeyDown(e);
-			base.OnPreviewKeyDown(e);
-		}
-
-		protected override void OnDragEnter(DragEventArgs e)
-		{
-			if (DragDropTool != null)
-				DragDropTool.OnDragEnter(e);
-			base.OnDragEnter(e);
-		}
-
-		protected override void OnDragLeave(DragEventArgs e)
-		{
-			if (DragDropTool != null)
-				DragDropTool.OnDragLeave(e);
-			base.OnDragLeave(e);
-		}
-
-		protected override void OnDragOver(DragEventArgs e)
-		{
-			if (DragDropTool != null)
-				DragDropTool.OnDragOver(e);
-			base.OnDragOver(e);
-		}
-
-		protected override void OnDrop(DragEventArgs e)
-		{
-			if (DragDropTool != null)
-				DragDropTool.OnDrop(e);
-			base.OnDrop(e);
-		}
-
-		protected override Size MeasureOverride(Size constraint)
-		{
-			base.MeasureOverride(DocumentSize);
-			return DocumentSize;
-		}
-
-		protected override void OnRender(DrawingContext dc)
-		{
-			var rect = new Rect(0, 0, RenderSize.Width, RenderSize.Height);
-			dc.DrawRectangle(Background, null, rect);
-			if (ShowGrid && GridCellSize.Width > 0 && GridCellSize.Height > 0)
-				DrawGrid(dc, rect);
-		}
-
-		protected virtual void DrawGrid(DrawingContext dc, Rect rect)
-		{
-			//using .5 forces wpf to draw a single pixel line
-			for (var i = 0.5; i < rect.Height; i += GridCellSize.Height)
-				dc.DrawLine(_gridPen, new Point(0, i), new Point(rect.Width, i));
-			for (var i = 0.5; i < rect.Width; i += GridCellSize.Width)
-				dc.DrawLine(_gridPen, new Point(i, 0), new Point(i, rect.Height));
-		}
-
-		protected virtual Pen CreateGridPen()
-		{
-			return new Pen(Brushes.LightGray, (1 / Zoom));
-		}
-
-		private void BindCommands()
-		{
-			CommandBindings.Add(new CommandBinding(ApplicationCommands.Cut, ExecuteCommand, CanExecuteCommand));
-			CommandBindings.Add(new CommandBinding(ApplicationCommands.Copy, ExecuteCommand, CanExecuteCommand));
-			CommandBindings.Add(new CommandBinding(ApplicationCommands.Paste, ExecuteCommand, CanExecuteCommand));
-			CommandBindings.Add(new CommandBinding(ApplicationCommands.Delete, ExecuteCommand, CanExecuteCommand));
-		}
-
-		private void ExecuteCommand(object sender, ExecutedRoutedEventArgs e)
-		{
-			if (Controller != null)
-				Controller.ExecuteCommand(e.Command, e.Parameter);
-			if (e.Command == ApplicationCommands.Delete)
-				Selection.Clear();
-		}
-
-		private void CanExecuteCommand(object sender, CanExecuteRoutedEventArgs e)
-		{
-			if (Controller != null)
-				e.CanExecute = Controller.CanExecuteCommand(e.Command, e.Parameter);
-		}
-	}
+        /// <summary>
+        /// 是否可以执行方法，使用指定控制器的方法
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CanExecuteCommand(object sender, CanExecuteRoutedEventArgs e)
+        {
+            if (Controller != null)
+                e.CanExecute = Controller.CanExecuteCommand(e.Command, e.Parameter);
+        }
+    }
 }

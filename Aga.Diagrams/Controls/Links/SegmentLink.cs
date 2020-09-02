@@ -7,6 +7,9 @@ using System.Windows.Media;
 
 namespace Aga.Diagrams.Controls
 {
+	/// <summary>
+	/// 线段连接
+	/// </summary>
 	public class SegmentLink: LinkBase
 	{
 		static SegmentLink()
@@ -14,7 +17,9 @@ namespace Aga.Diagrams.Controls
 			FrameworkElement.DefaultStyleKeyProperty.OverrideMetadata(
 				typeof(SegmentLink), new FrameworkPropertyMetadata(typeof(LinkBase)));
 		}
-
+		/// <summary>
+		/// 更新路径
+		/// </summary>
 		public override void UpdatePath()
 		{
 			var linePoints = CalculateSegments();
@@ -31,16 +36,23 @@ namespace Aga.Diagrams.Controls
 			else
 				this.PathGeometry = null;
 		}
-
+		/// <summary>
+		/// 当开始和结束数组不为空时，更新线段显示
+		/// </summary>
+		/// <returns></returns>
 		protected virtual Point[] CalculateSegments()
 		{
-			var res = GetEndPoinds();
+			var res = GetEndPoints(); 
 			if (res != null)
 				UpdateEdges(res);
 			return res;
 		}
-
-		protected Point[] GetEndPoinds()
+		/// <summary>
+		/// 获取连接线结束的两个点（第一个是连接开始点，第二个是连接结束点）
+		/// 任意一个没有则不显示
+		/// </summary>
+		/// <returns></returns>
+		protected Point[] GetEndPoints()
 		{
 			Point tc, sc;
 			if (Target != null)
@@ -62,7 +74,10 @@ namespace Aga.Diagrams.Controls
 			linePoints[1] = tc;
 			return linePoints;
 		}
-
+		/// <summary>
+		/// 更新边界
+		/// </summary>
+		/// <param name="linePoints"></param>
 		protected void UpdateEdges(Point[] linePoints)
 		{
 			if (linePoints.Length >= 2)
@@ -74,6 +89,10 @@ namespace Aga.Diagrams.Controls
 			}
 		}
 
+		/// <summary>
+		/// 根据数组计算所有属性的值
+		/// </summary>
+		/// <param name="linePoints"></param>
 		protected virtual void CalculatePositions(Point[] linePoints)
 		{
 			StartPoint = linePoints[0];
@@ -85,6 +104,11 @@ namespace Aga.Diagrams.Controls
 			LabelPosition = new Point(p.X, p.Y - 15);
 		}
 
+		/// <summary>
+		/// 判断点是否为空，数量是否大于2，有没有NaN
+		/// </summary>
+		/// <param name="linePoints"></param>
+		/// <returns></returns>
 		private bool CheckPoints(Point[] linePoints)
 		{
 			if (linePoints != null && linePoints.Length >= 2)

@@ -93,3 +93,5 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspec
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Aga.Diagrams.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Aga.Diagrams.pdb

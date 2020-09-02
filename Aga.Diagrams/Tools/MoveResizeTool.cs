@@ -11,17 +11,44 @@ using Aga.Diagrams.Adorners;
 
 namespace Aga.Diagrams.Tools
 {
+	/// <summary>
+	/// 移动调整 工具类
+	/// </summary>
 	public class MoveResizeTool : IMoveResizeTool
 	{
+		/// <summary>
+		/// 拖拽端口的样式
+		/// </summary>
 		public DragThumbKinds DragKind { get; protected set; }
+		/// <summary>
+		/// 初始范围
+		/// </summary>
 		public Rect[] InitialBounds { get; protected set; }
+		/// <summary>
+		/// 图表中的元素
+		/// </summary>
 		public DiagramItem[] DragItems { get; protected set; }
 		//public bool SnapToGrid { get; set; }
+		/// <summary>
+		/// 移动界面的单元格
+		/// </summary>
 		public Size MoveGridCell { get; set; }
+		/// <summary>
+		/// 调整界面的单元格
+		/// </summary>
 		public Size ResizeGridCell { get; set; }
 
+		/// <summary>
+		/// 指定的视图
+		/// </summary>
 		protected DiagramView View { get; private set; }
+		/// <summary>
+		/// 指定的控制器
+		/// </summary>
 		protected IDiagramController Controller { get { return View.Controller; } }
+		/// <summary>
+		/// 初始点
+		/// </summary>
 		protected Point Start { get; set; }
 
 		public MoveResizeTool(DiagramView view)
@@ -29,6 +56,12 @@ namespace Aga.Diagrams.Tools
 			View = view;
 		}
 
+		/// <summary>
+		/// 开始拖拽
+		/// </summary>
+		/// <param name="start"></param>
+		/// <param name="item"></param>
+		/// <param name="kind"></param>
 		public virtual void BeginDrag(Point start, DiagramItem item, DragThumbKinds kind)
 		{
 			Start = start;
@@ -49,11 +82,20 @@ namespace Aga.Diagrams.Tools
 			View.DragAdorner = CreateAdorner();
 		}
 
+		/// <summary>
+		/// 返回对应的元素是否允许拖动
+		/// </summary>
+		/// <param name="item"></param>
+		/// <returns></returns>
 		protected bool IsMovable(DiagramItem item)
 		{
 			return !(item is LinkBase);
 		}
 
+		/// <summary>
+		/// 拖动到某一位置
+		/// </summary>
+		/// <param name="vector"></param>
 		public virtual void DragTo(Vector vector)
 		{
 			vector = UpdateVector(vector);
@@ -90,11 +132,18 @@ namespace Aga.Diagrams.Tools
 			}
 		}
 
+		/// <summary>
+		/// 是否可以接受拖放
+		/// </summary>
+		/// <returns></returns>
 		public virtual bool CanDrop()
 		{
 			return true;
 		}
-		
+		/// <summary>
+		/// 结束拖拽
+		/// </summary>
+		/// <param name="doCommit"></param>
 		public virtual void EndDrag(bool doCommit)
 		{
 			if (doCommit)
@@ -110,11 +159,19 @@ namespace Aga.Diagrams.Tools
 			InitialBounds = null;
 		}
 
+		/// <summary>
+		/// 创建移动调整装饰器
+		/// </summary>
+		/// <returns></returns>
 		protected virtual Adorner CreateAdorner()
 		{
 			return new MoveResizeAdorner(View, Start) { Cursor = GetCursor() };
 		}
 
+		/// <summary>
+		/// 获取光标样式（上下拉动，左右拉动，全向拉动（斜角））
+		/// </summary>
+		/// <returns></returns>
 		protected Cursor GetCursor()
 		{
 			switch (DragKind)
@@ -137,6 +194,11 @@ namespace Aga.Diagrams.Tools
 			return null;
 		}
 
+		/// <summary>
+		/// 调整向量以匹配单元格
+		/// </summary>
+		/// <param name="vector"></param>
+		/// <returns></returns>
 		protected virtual Vector UpdateVector(Vector vector)
 		{
 			Size cell;
@@ -155,6 +217,9 @@ namespace Aga.Diagrams.Tools
 				return vector;
 		}
 
+		/// <summary>
+		/// 恢复范围
+		/// </summary>
 		protected virtual void RestoreBounds()
 		{
 			for (int i = 0; i < DragItems.Length; i++)

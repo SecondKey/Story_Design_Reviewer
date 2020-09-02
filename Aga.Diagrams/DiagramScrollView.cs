@@ -9,14 +9,26 @@ using System.Windows.Threading;
 
 namespace Aga.Diagrams
 {
+	/// <summary>
+	/// 图表滚动页面
+	/// </summary>
 	public class DiagramScrollView: ScrollViewer
 	{
 		double _dx = 0;
 		double _dy = 0;
 		private DispatcherTimer _timer;
 
+		/// <summary>
+		/// 滚动灵敏度
+		/// </summary>
 		public double Sensitivity { get; set; }
+		/// <summary>
+		/// 滚动一步
+		/// </summary>
 		public double ScrollStep { get; set; }
+		/// <summary>
+		/// 延迟
+		/// </summary>
 		public double Delay 
 		{
 			get { return _timer.Interval.TotalMilliseconds; }

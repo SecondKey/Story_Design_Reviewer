@@ -26,5 +26,6 @@ namespace Story_Design_Reviewer.WPFControls
         {
             InitializeComponent();
         }
+
     }
 }

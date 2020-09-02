@@ -7,8 +7,17 @@ using System.Windows.Media;
 
 namespace Aga.Diagrams
 {
+	/// <summary>
+	/// 视觉辅助类
+	/// </summary>
 	public static class VisualHelper
 	{
+		/// <summary>
+		/// 查找一个依赖项的最顶层父项
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="value"></param>
+		/// <returns></returns>
 		public static T FindParent<T>(this DependencyObject value) where T : DependencyObject
 		{
 			DependencyObject parent = value;

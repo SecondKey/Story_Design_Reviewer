@@ -22,7 +22,7 @@
         </i:EventTrigger>
     </i:Interaction.Triggers>
 
-    <Grid>
+    <Grid Background="{StaticResource MainBackGroundColor}">
         <DockPanel LastChildFill="True" >
             <!--#region 菜单 工具 状态 -->
             <Menu DockPanel.Dock="Top">
@@ -53,7 +53,7 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition />
                     <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition MinWidth="250"  MaxWidth="400" Width="{Binding LayOutSettings[InspectePage_Width]}"/>
+                    <ColumnDefinition MinWidth="200"  MaxWidth="400" Width="{Binding LayOutSettings[InspectePage_Width]}"/>
                 </Grid.ColumnDefinitions>
 
                 <GridSplitter Grid.Column="1" Style="{StaticResource VerticalSplitter}"/>
@@ -61,7 +61,7 @@
                 <!--#endregion-->
                 <!--#region 错误面板-->
 
-                <WPFControls:ErrorListPanel />
+                <WPFControls:ErrorListPanel/>
                 <!--#endregion-->
 
                 <!--#endregion-->

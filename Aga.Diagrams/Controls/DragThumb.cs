@@ -11,12 +11,23 @@ using Aga.Diagrams.Adorners;
 
 namespace Aga.Diagrams.Controls
 {
+	/// <summary>
+	/// 拖动的端口
+	/// </summary>
 	public class DragThumb: Control
 	{
+		/// <summary>
+		/// 拖动端口的样式
+		/// </summary>
 		public DragThumbKinds Kind { get; set; }
-
+		/// <summary>
+		/// 鼠标按下的点
+		/// </summary>
 		protected Point? MouseDownPoint { get; set; }
-
+		/// <summary>
+		/// 当鼠标按下时操作
+		/// </summary>
+		/// <param name="e"></param>
 		protected override void OnMouseDown(System.Windows.Input.MouseButtonEventArgs e)
 		{
 			if (e.ChangedButton == MouseButton.Left)

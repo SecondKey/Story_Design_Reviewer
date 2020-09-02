@@ -7,6 +7,9 @@ using System.Windows;
 
 namespace Aga.Diagrams.Controls
 {
+	/// <summary>
+	/// 重新连接控制器
+	/// </summary>
 	public class RelinkControl : Control
 	{
 		static RelinkControl()
