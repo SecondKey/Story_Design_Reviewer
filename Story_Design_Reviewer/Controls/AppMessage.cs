@@ -80,19 +80,30 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgElementOptions : MsgBase
+    public class MsgElementOperation : MsgBase
     {
         public ProcessElement targetElement;
 
         public ElementType elementType;
 
-        public OptionsType optionsType;
+        public OperationType operationType;
 
-        public MsgElementOptions(AllAppMsg msg, ProcessElement targetElement, ElementType elementType, OptionsType optionsType) : base(msg)
+        public MsgElementOperation(AllAppMsg msg, ProcessElement targetElement, ElementType elementType, OperationType operationType) : base(msg)
         {
             this.targetElement = targetElement;
             this.elementType = elementType;
-            this.optionsType = optionsType;
+            this.operationType = operationType;
+        }
+    }
+
+    public class MsgElementChangeValue : MsgBase
+    {
+        public ProcessElement targetElement;
+
+        public string propertyName;
+
+        public MsgElementChangeValue(AllAppMsg msg) : base(msg)
+        {
         }
     }
 }

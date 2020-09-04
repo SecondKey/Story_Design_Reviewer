@@ -72,8 +72,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\AppMessage.cs" />
-    <Compile Include="Controls\ErrorCenter.cs" />
+    <Compile Include="Controls\Error\ErrorCenter.cs" />
+    <Compile Include="Controls\Error\ErrorProxy.cs" />
     <Compile Include="Controls\EventTime.cs" />
+    <Compile Include="Controls\UndoRedo\UndoRedoController.cs" />
+    <Compile Include="Controls\UndoRedo\UndoRedoProxy.cs" />
     <Compile Include="DebugTools\DebugModel.cs" />
     <Compile Include="DebugTools\DebugViewModel.cs" />
     <Compile Include="DebugTools\DebugWindow.xaml.cs">

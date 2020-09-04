@@ -1,0 +1,41 @@
+# Mr. Advice appveyor.yml script
+
+version: '{branch}-{build}'
+image: Visual Studio 2017
+
+branches:
+  only:
+    - fody
+    - master
+    - netstandard
+    - fix-warning-cant-load
+
+before_build:
+  nuget restore MrAdvice.sln
+
+configuration: Release
+platform: Any CPU
+
+build:
+  parallel: true
+  project: MrAdvice.sln
+  publish_nuget: false
+  publish_nuget_symbols: false
+  verbosity: minimal
+
+test:
+  assemblies:
+    - '**\*Test.exe'
+    - '**\*Test.dll'
+
+artifacts:
+  - path: 'MrAdvice.Weaver\bin\$(configuration)\*.nupkg'
+
+deploy:
+  provider: NuGet
+  api_key:
+    secure: rEYnR9JThbc6x8DdCo1K8+fgsGKzjNKzTZsldXFLYMm/tFPC7JWWvuKpVTrDBd+g
+  skip_symbols: false
+
+after_test:
+  ps: Get-ChildItem .\*.nupkg | % { Push-AppveyorArtifact $_.FullName -FileName $_.Name }

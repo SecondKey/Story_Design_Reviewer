@@ -23,12 +23,16 @@ namespace Story_Design_Reviewer
         ChangeLanguage,
         #endregion
 
-        #region ElementOptions
+        #region ElementOperation
         DeleteOptions,
+
+        OnElementValueChange,
         #endregion
 
         #region UserControl
         ChoiseEveneElement,
+        Undo,
+        Redo
         #endregion
     }
 
@@ -52,7 +56,7 @@ namespace Story_Design_Reviewer
         LostMotivation,
     }
 
-    public enum OptionsType
+    public enum OperationType
     {
 
     }
