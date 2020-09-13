@@ -9,12 +9,6 @@ using System.Security.Policy;
 
 namespace Story_Design_Reviewer
 {
-    public enum UndoRedoOperation
-    {
-        Delete=1,
-        Create=10,
-    }
-
     public enum UndoRedoType
     {
         Value,

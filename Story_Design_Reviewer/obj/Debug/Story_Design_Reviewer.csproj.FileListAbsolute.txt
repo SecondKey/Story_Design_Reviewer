@@ -67,7 +67,6 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\MainWindow.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ErrorListPanel.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\InspectPage.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\EventInspectPanel.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ProcessEventNode.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\App.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\GeneratedInternalTypeHelper.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer_MarkupCompile.cache
@@ -79,7 +78,6 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\MainWindow.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ErrorListPanel.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\InspectPage.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\EventInspectPanel.baml
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ProcessEventNode.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.g.resources
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.Properties.Resources.resources
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.csproj.GenerateResource.cache
@@ -87,11 +85,15 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Revie
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Reviewer.csproj.CopyComplete
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Themes\Generic.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Controlsdictionary.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea.baml
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.baml
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Aga.Diagrams.dll
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Aga.Diagrams.pdb
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ProcessElement\Event\ProcessEventNode.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\MrAdvice.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\MrAdvice.xml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ProcessElement\Event\ProcessEventNode.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\WorkingArea.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\WorkingArea.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectExpander.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectItem.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectExpander.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectItem.g.cs

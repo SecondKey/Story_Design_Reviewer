@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Story_Design_Reviewer.Models.Element.Event
+namespace Story_Design_Reviewer
 {
-    public abstract class EventNodeBase : ProcessNodeElement
+    abstract class EventNodeBase : ProcessElementInDiagram,IContainsElements
     {
         protected EventNodeBase(string elementName, ProcessElement parent, Vector v2, bool loadData) : base(elementName, parent, v2)
         {
@@ -19,6 +20,9 @@ namespace Story_Design_Reviewer.Models.Element.Event
                 LoadEventData();
             }
         }
+
+        public ObservableCollection<ProcessElementInDiagram> Nodes { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public ObservableCollection<LinkViewModel> Links { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public abstract void LoadEventData();
     }

@@ -14,6 +14,8 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +49,9 @@
     <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
     </Reference>
+    <Reference Include="MrAdvice, Version=2.0.0.0, Culture=neutral, PublicKeyToken=c0e7e6eab6f293d8, processorArchitecture=MSIL">
+      <HintPath>..\packages\MrAdvice.2.8.11\lib\net40-client\MrAdvice.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -72,9 +77,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controls\AppMessage.cs" />
+    <Compile Include="Controls\Systen\StorySystemBase.cs" />
     <Compile Include="Controls\Error\ErrorCenter.cs" />
     <Compile Include="Controls\Error\ErrorProxy.cs" />
     <Compile Include="Controls\EventTime.cs" />
+    <Compile Include="Controls\Systen\StorySystemItem.cs" />
+    <Compile Include="Controls\UndoRedo\UndoRedoAdvice.cs" />
     <Compile Include="Controls\UndoRedo\UndoRedoController.cs" />
     <Compile Include="Controls\UndoRedo\UndoRedoProxy.cs" />
     <Compile Include="DebugTools\DebugModel.cs" />
@@ -84,11 +92,16 @@
     </Compile>
     <Compile Include="Models\Element\Event\EventNodeBase.cs" />
     <Compile Include="Models\Element\Event\SimpleEventNode.cs" />
+    <Compile Include="Models\Element\IContainsElements.cs" />
+    <Compile Include="ViewModel\ElementViewModel\LinkViewModel.cs" />
+    <Compile Include="ViewModel\WorkingArea\FlowDiagramViewModel.cs" />
+    <Compile Include="WPFControls\ProcessElement\Link\FreeLink.cs" />
+    <Compile Include="WPFControls\ProcessElement\Link\OrthogonalLink.cs" />
     <Compile Include="Models\Element\Role\RoleNodeBase.cs" />
     <Compile Include="Models\Element\Event\EventNode.cs" />
     <Compile Include="Models\Error\ErrorElementModel.cs" />
-    <Compile Include="Models\ProcessElement.cs" />
-    <Compile Include="Models\ProcessNodeElement.cs" />
+    <Compile Include="Models\Element\ProcessElement.cs" />
+    <Compile Include="Models\Element\ProcessElementInDiagram.cs" />
     <Compile Include="ResourcesDictionaryEvents.cs" />
     <Compile Include="Controls\AppDataCenter.cs" />
     <Compile Include="ViewModel\DataViewModelBase.cs" />
@@ -97,7 +110,8 @@
     <Compile Include="ViewModel\InspectView\EventInspectViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel\MainWindowViewModel.cs" />
     <Compile Include="Controls\RWXml.cs" />
-    <Compile Include="ViewModel\ElementNodeViewModel.cs" />
+    <Compile Include="ViewModel\ElementViewModel\ProcessElementViewModel.cs" />
+    <Compile Include="ViewModel\ElementViewModel\TimeAxisViewModel.cs" />
     <Compile Include="ViewModel\ViewModelInterface\IPretreatmentEvents.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="ViewModel\MainViewModel\WorkingAreaViewModel.cs" />
@@ -107,19 +121,20 @@
     <Compile Include="WPFControls\InspectPage.xaml.cs">
       <DependentUpon>InspectPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFControls\Inspect\Element\InspectExpander.xaml.cs">
+    <Compile Include="InspectExpander.xaml.cs">
       <DependentUpon>InspectExpander.xaml</DependentUpon>
     </Compile>
     <Compile Include="WPFControls\Inspect\EventInspectPanel.xaml.cs">
       <DependentUpon>EventInspectPanel.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFControls\Inspect\Element\InspectItem.xaml.cs">
+    <Compile Include="InspectItem.xaml.cs">
       <DependentUpon>InspectItem.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFControls\ProcessEventNode.xaml.cs">
+    <Compile Include="WPFControls\ProcessElement\Event\ProcessEventNode.xaml.cs">
       <DependentUpon>ProcessEventNode.xaml</DependentUpon>
     </Compile>
-    <Compile Include="WPFControls\WorkingArea.xaml.cs">
+    <Compile Include="WPFControls\ProcessElement\ProcessElementNode.cs" />
+    <Compile Include="WPFControls\WorkingArea\WorkingArea.xaml.cs">
       <DependentUpon>WorkingArea.xaml</DependentUpon>
     </Compile>
     <Page Include="Controlsdictionary.xaml">
@@ -154,7 +169,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFControls\Inspect\Element\InspectExpander.xaml">
+    <Page Include="InspectExpander.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -162,15 +177,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFControls\Inspect\Element\InspectItem.xaml">
+    <Page Include="InspectItem.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFControls\ProcessEventNode.xaml">
+    <Page Include="WPFControls\ProcessElement\Event\ProcessEventNode.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="WPFControls\WorkingArea.xaml">
+    <Page Include="WPFControls\WorkingArea\WorkingArea.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,7 +218,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\" />
+    <Folder Include="WPFControls\Inspect\Element\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\AppData.xml">
@@ -230,4 +245,11 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\MrAdvice.2.8.11\build\MrAdvice.targets" Condition="Exists('..\packages\MrAdvice.2.8.11\build\MrAdvice.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\MrAdvice.2.8.11\build\MrAdvice.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\MrAdvice.2.8.11\build\MrAdvice.targets'))" />
+  </Target>
 </Project>

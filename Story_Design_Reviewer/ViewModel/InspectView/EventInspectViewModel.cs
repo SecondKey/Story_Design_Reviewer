@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Story_Design_Reviewer.ViewModel.InspectView
+namespace Story_Design_Reviewer
 {
     public class EventInspectViewModel : DataViewModelBase
     {

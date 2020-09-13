@@ -1,12 +1,11 @@
-﻿using Story_Design_Reviewer.Models.Element;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Story_Design_Reviewer.Models.Element.Event
+namespace Story_Design_Reviewer
 {
     public enum TimeRecordTyep
     {
@@ -39,10 +38,11 @@ namespace Story_Design_Reviewer.Models.Element.Event
         }
     }
 
-    public class EventNode : EventNodeBase
+    class EventNode : EventNodeBase
     {
         public EventNode(string elementName, ProcessElement parent, Vector v2, bool loadData) : base(elementName, parent, v2, loadData)
         {
+
         }
 
 
@@ -211,6 +211,11 @@ namespace Story_Design_Reviewer.Models.Element.Event
         {
             unUsedEventNum.Add(num);
             unUsedEventNum.Sort();
+        }
+
+        public override IEnumerable<PortType> GetPorts()
+        {
+            throw new NotImplementedException();
         }
         #endregion
 

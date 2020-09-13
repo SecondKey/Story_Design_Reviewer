@@ -1,5 +1,4 @@
-﻿using Story_Design_Reviewer.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Story_Design_Reviewer.WPFControls
+namespace Story_Design_Reviewer
 {
     /// <summary>
     /// ErrorListPanel.xaml 的交互逻辑

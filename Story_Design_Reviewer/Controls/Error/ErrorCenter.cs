@@ -26,7 +26,5 @@ namespace Story_Design_Reviewer
         }
         #endregion
 
-
-
     }
 }

@@ -6,7 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Windows.Media;
 
-namespace Story_Design_Reviewer.ViewModel
+namespace Story_Design_Reviewer
 {
     /// <summary>
     /// 用于处理对于设置属性的绑定

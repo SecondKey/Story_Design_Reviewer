@@ -9,15 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 
-namespace Story_Design_Reviewer.ViewModel
+namespace Story_Design_Reviewer
 {
-    public class ErrorPageViewModel : DataViewModelBase
+    class ErrorPageViewModel : DataViewModelBase
     {
         public ErrorPageViewModel()
         {
-            Models.ProcessElement p1 = new Models.ProcessElement("博丽灵梦博丽灵梦博丽灵梦博丽灵梦博丽灵梦博丽灵梦", null);
-            Models.ProcessElement p2 = new Models.ProcessElement("p2", p1);
-            Models.ProcessElement p3 = new Models.ProcessElement("p3", p2);
+            ProcessElement p1 = new ProcessElement("博丽灵梦博丽灵梦博丽灵梦博丽灵梦博丽灵梦博丽灵梦", null);
+            ProcessElement p2 = new ProcessElement("p2", p1);
+            ProcessElement p3 = new ProcessElement("p3", p2);
             ErrorList.Add(new ErrorElementModel(ErrorType.LostMotivation, p1));
             ErrorList.Add(new ErrorElementModel(ErrorType.LostMotivation, p2));
             ErrorList.Add(new ErrorElementModel(ErrorType.LostMotivation, p3));
@@ -198,7 +198,7 @@ namespace Story_Design_Reviewer.ViewModel
             {
                 return new RelayCommand(() =>
                 {
-                    Models.ProcessElement p123 = new Models.ProcessElement("p123", null);
+                    ProcessElement p123 = new ProcessElement("p123", null);
                     ErrorList.Add(new ErrorElementModel(ErrorType.LostMotivation, p123));
                 });
             }

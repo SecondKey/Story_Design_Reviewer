@@ -2,8 +2,6 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Story_Design_Reviewer.DebugTools;
-using Story_Design_Reviewer.WPFControls;
-using Story_Design_Reviewer.ViewModel.InspectView;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
@@ -11,8 +9,7 @@ using System.Windows.Documents;
 
 namespace Story_Design_Reviewer.ViewModel
 {
-
-    public class ViewModelLocator
+    class ViewModelLocator
     {
         public ViewModelLocator()
         {

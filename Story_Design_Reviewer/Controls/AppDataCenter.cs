@@ -39,35 +39,80 @@ namespace Story_Design_Reviewer
     #endregion
 
     #region Type
-    public enum ElementType
+    /// <summary>
+    /// 撤销重做类型
+    /// </summary>
+    public enum UndoRedoOperationType
     {
-        Role,
-        MainTimeLine,
-        Event,
-        SimpleEvent,
-        SpecialEvent,
-        Motive,
-        Behavior,
-        Relation
+        Delete = 1,
+        Create = 10,
     }
 
+    /// <summary>
+    /// 错误的类型
+    /// </summary>
     public enum ErrorType
     {
         LostMotivation,
     }
 
+    /// <summary>
+    /// 操作类型
+    /// </summary>
     public enum OperationType
     {
 
     }
 
+    #region Diagram
+    /// <summary>
+    /// 端口类型
+    /// </summary>
+    public enum PortType
+    {
+        Top,
+        Bottom,
+        Left,
+        Right,
+        None
+    }
 
+    /// <summary>
+    /// 记录元素在图中
+    /// </summary>
+    public enum PositionType
+    {
+        LeftTop,//左边和顶边位置
+        RowColumn,//所在行和所在列
+    }
 
+    /// <summary>
+    /// 元素的类型
+    /// </summary>
+    public enum ElementType
+    {
+        Role,//角色
+
+        MainTimeLine,//主时间线
+        Event,//事件
+        SimpleEvent,//简单事件
+        SpecialEvent,//特殊事件
+
+        Motive,//动机
+        Behavior,//行为
+        Relation,//关系
+    }
+    #endregion
+
+    /// <summary>
+    /// 设置的类型
+    /// </summary>
     public enum SettingsType
     {
         Language,
     }
-    #endregion
+    #endregion 
+
     #endregion
 
     public class AppDataCenter : ObservableObject
@@ -186,5 +231,7 @@ namespace Story_Design_Reviewer
         }
 
         #endregion
+
+        //public timeSystem
     }
 }

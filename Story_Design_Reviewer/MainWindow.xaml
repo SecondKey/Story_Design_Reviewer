@@ -6,7 +6,6 @@
         xmlns:mvvm="http://www.galasoft.ch/mvvmlight"
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:local="clr-namespace:Story_Design_Reviewer"
-        xmlns:WPFControls="clr-namespace:Story_Design_Reviewer.WPFControls"
         xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero2" x:Class="Story_Design_Reviewer.MainWindow"
         mc:Ignorable="d"
         x:Name="window"
@@ -61,17 +60,17 @@
                 <!--#endregion-->
                 <!--#region 错误面板-->
 
-                <WPFControls:ErrorListPanel/>
+                <local:ErrorListPanel/>
                 <!--#endregion-->
 
                 <!--#endregion-->
 
                 <!--#endregion-->
                 <!--#region 工作面板-->
-                <WPFControls:WorkingArea  Grid.Column="2" x:Name="WorkingArea"  Margin="-1"/>
+                <local:WorkingArea  Grid.Column="2" x:Name="WorkingArea"  Margin="-1"/>
 
                 <!--#region 检视面板-->
-                <WPFControls:InspectPage Grid.Column="4"/>
+                <local:InspectPage Grid.Column="4"/>
             </Grid>
         </DockPanel>
     </Grid>

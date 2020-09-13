@@ -1,6 +1,4 @@
 ﻿using GalaSoft.MvvmLight;
-using Story_Design_Reviewer.Models;
-using Story_Design_Reviewer.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -10,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Story_Design_Reviewer
 {
-    public class ErrorElementModel : ObservableObject
+    class ErrorElementModel : ObservableObject
     {
         public string ErrorText { get; set; }
 

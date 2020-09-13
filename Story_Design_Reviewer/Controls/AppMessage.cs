@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Messaging;
 using Story_Design_Reviewer.DebugTools;
-using Story_Design_Reviewer.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -80,7 +79,7 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgElementOperation : MsgBase
+    class MsgElementOperation : MsgBase
     {
         public ProcessElement targetElement;
 
@@ -96,7 +95,7 @@ namespace Story_Design_Reviewer
         }
     }
 
-    public class MsgElementChangeValue : MsgBase
+    class MsgElementChangeValue : MsgBase
     {
         public ProcessElement targetElement;
 

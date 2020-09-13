@@ -7,7 +7,6 @@ using System.IO;
 using System.Xml.Linq;
 using System.Diagnostics;
 using GalaSoft.MvvmLight.Messaging;
-using Story_Design_Reviewer.ViewModel;
 
 namespace Story_Design_Reviewer
 {

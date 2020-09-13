@@ -22,7 +22,7 @@ namespace Aga.Diagrams
 
 		/// <summary>
 		/// Is called when user create a link between items
-		/// 当用户创建项目之间的链接时调用
+		/// 当用户创建项目之间的链接或拖动时调用
 		/// </summary>
 		/// <param name="initialState">the state of the link before user action用户操作前链接的状态</param>
 		/// <param name="link">Link in the current state链接处于当前状态</param>

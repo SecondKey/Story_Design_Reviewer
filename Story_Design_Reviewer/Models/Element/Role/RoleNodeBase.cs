@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Story_Design_Reviewer.Models.Element.Role
+namespace Story_Design_Reviewer
 {
     class RoleNodeBase
     {

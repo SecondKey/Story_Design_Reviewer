@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
 
-namespace Story_Design_Reviewer.ViewModel
+namespace Story_Design_Reviewer
 {
     public class MainWindowViewModel : DataViewModelBase
     {

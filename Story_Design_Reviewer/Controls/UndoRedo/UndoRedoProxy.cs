@@ -1,5 +1,4 @@
-﻿using Story_Design_Reviewer.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,7 +31,7 @@ namespace Story_Design_Reviewer
             
         }
 
-        public UndoRedoProxy(ProcessElement element,string name,object value,UndoRedoOperation operation)
+        public UndoRedoProxy(ProcessElement element,string name,object value, UndoRedoOperationType operation)
         {
             
         }

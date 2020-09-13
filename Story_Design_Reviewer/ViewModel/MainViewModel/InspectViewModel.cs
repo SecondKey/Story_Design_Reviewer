@@ -1,7 +1,4 @@
 ﻿using GalaSoft.MvvmLight;
-using Story_Design_Reviewer.Models;
-using Story_Design_Reviewer.Models.Element.Event;
-using Story_Design_Reviewer.WPFControls;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +10,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Markup;
 
-namespace Story_Design_Reviewer.ViewModel
+namespace Story_Design_Reviewer
 {
     public struct InspectItemStruct
     {
@@ -22,7 +19,7 @@ namespace Story_Design_Reviewer.ViewModel
         public bool AllowModify { get; set; }
     }
 
-    public class InspectViewModel : DataViewModelBase
+    class InspectViewModel : DataViewModelBase
     {
         InspectPage inspectPage;
         StackPanel inspectStackPanel;
