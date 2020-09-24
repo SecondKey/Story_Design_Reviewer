@@ -16,13 +16,16 @@ using System.Windows.Shapes;
 namespace Story_Design_Reviewer
 {
     /// <summary>
-    /// WorkingArea.xaml 的交互逻辑
+    /// FlowChartPage.xaml 的交互逻辑
     /// </summary>
-    public partial class WorkingArea : UserControl
+    public partial class FlowChartPage : UserControl
     {
-        public WorkingArea()
+        public FlowChartPage()
         {
             InitializeComponent();
         }
+
+
+
     }
 }

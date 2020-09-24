@@ -12,42 +12,7 @@
              DataContext="{Binding Source={StaticResource Locator}, Path=WorkingAreaPage}"
              >
     <Control.Resources>
-        <Style x:Key="TabItemText" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="10"/>
-            <Setter Property="Height" Value="10"/>
-            <Setter Property="LayoutTransform">
-                <Setter.Value>
-                    <TransformGroup>
-                        <RotateTransform Angle="90"/>
-                    </TransformGroup>
-                </Setter.Value>
-            </Setter>
-        </Style>
 
-        <Style x:Key="ElementScrollViewer" TargetType="ScrollViewer">
-            <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
-            <Setter Property="Height" Value="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type TabControl}},Path=ActualHeight}"/>
-        </Style>
-
-        <Style x:Key="ElementList" TargetType="ListBox">
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="ItemContainerStyle">
-                <Setter.Value>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type ListBoxItem}">
-                                    <Border Width="100" Height="70" Name="border" BorderThickness="0,0,0,1" BorderBrush="#ACACAC" >
-                                        <Button Margin="10,10,10,10" Content="123"/>
-                                    </Border>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-            <EventSetter Event="PreviewMouseWheel" Handler="ListBox_Answers_PreviewMouseWheel"/>
-        </Style>
 
     </Control.Resources>
     <TabControl FontSize="15">
@@ -57,38 +22,7 @@
                         </Style>
                     </TabControl.ItemContainerStyle>-->
         <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_TimeShaft]}" Style="{StaticResource TabItemStyle}">
-            <DockPanel LastChildFill="True" Margin="-3">
-                <Border Background="{StaticResource PageBackGroundColor}" BorderBrush="{StaticResource MainBorderBrush}" BorderThickness="1">
-                    <Expander ExpandDirection="Right">
-                        <Border BorderBrush="{StaticResource MainBorderBrush}" BorderThickness="1">
-                            <TabControl TabStripPlacement="Left" Margin="-1">
-                                <TabItem Style="{StaticResource ElementTabItemStyle}">
-                                    <TabItem.Header>
-                                        <TextBlock Height="10" Style="{StaticResource TabItemText}" Text="{Binding Path=AppDataText[WorkingArea_TimeLine_EventNode]}" />
-                                    </TabItem.Header>
-                                    <ScrollViewer Style="{StaticResource ElementScrollViewer}" HorizontalScrollBarVisibility="Disabled" Height="auto">
-                                        <ListBox Width="110" Style="{StaticResource ElementList}" ItemsSource="{Binding TestList}" BorderThickness="0"/>
-                                    </ScrollViewer>
-                                </TabItem>
-                                <TabItem Style="{StaticResource ElementTabItemStyle}">
-                                    <TabItem.Header>
-                                        <TextBlock Height="10" Style="{StaticResource TabItemText}" Text="{Binding Path=AppDataText[WorkingArea_TimeLine_EventNode]}" />
-                                    </TabItem.Header>
-                                    <ScrollViewer Style="{StaticResource ElementScrollViewer}" HorizontalScrollBarVisibility="Disabled" Height="auto">
-                                        <ListBox Width="110" Style="{StaticResource ElementList}" ItemsSource="{Binding TestList}" BorderThickness="0"/>
-                                    </ScrollViewer>
-                                </TabItem>
-                            </TabControl >
-                        </Border>
-                    </Expander>
-                </Border>
-                <Border Style="{StaticResource PageBorder}">
-                    <diagrame:DiagramScrollView>
-                        <diagrame:DiagramView Name="diagrameView" ShowGrid="true" GridCellSize="10,10" DocumentSize="2000,2000" Zoom="1">
-                        </diagrame:DiagramView>
-                    </diagrame:DiagramScrollView>
-                </Border>
-            </DockPanel>
+            <local:FlowChartPage/>
         </TabItem>
         <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_Event]}" Style="{DynamicResource TabItemStyle}"/>
         <TabItem Header="{Binding Path=AppDataText[WorkingArea_Title_Map]}" Style="{DynamicResource TabItemStyle}"/>

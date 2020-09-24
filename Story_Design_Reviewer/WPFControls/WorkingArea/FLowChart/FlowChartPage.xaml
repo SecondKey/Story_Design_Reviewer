@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="Story_Design_Reviewer.FlowChartPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Story_Design_Reviewer"
+             xmlns:diagrame="clr-namespace:Aga.Diagrams;assembly=Aga.Diagrams"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="tabItemTemplete" >
+            <local:FlowChartItemList TypeList="{Binding }"/>
+        </DataTemplate>
+    </UserControl.Resources>
+    <DockPanel LastChildFill="True" Margin="-3">
+        <Border Background="{StaticResource PageBackGroundColor}" BorderBrush="{StaticResource MainBorderBrush}" BorderThickness="1">
+            <Expander ExpandDirection="Right">
+                <Border BorderBrush="{StaticResource MainBorderBrush}" BorderThickness="1">
+                    <TabControl TabStripPlacement="Left" Margin="-1">
+                        <local:FlowChartItemList/>
+                        <local:FlowChartItemList/>
+                    </TabControl >
+                </Border>
+            </Expander>
+        </Border>
+        <Border Style="{StaticResource PageBorder}">
+            <diagrame:DiagramScrollView>
+                <diagrame:DiagramView Name="diagrameView" ShowGrid="true" GridCellSize="10,10" DocumentSize="2000,2000" Zoom="1">
+                </diagrame:DiagramView>
+            </diagrame:DiagramScrollView>
+        </Border>
+    </DockPanel>
+</UserControl>

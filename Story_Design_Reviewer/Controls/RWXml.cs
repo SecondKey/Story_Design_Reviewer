@@ -12,8 +12,21 @@ namespace Story_Design_Reviewer
 {
     class RWXml
     {
+        /// <summary>
+        /// 所有的程序xml
+        /// </summary>
         Dictionary<string, XDocument> allAppXml = new Dictionary<string, XDocument>();
+        /// <summary>
+        /// 当前项目应用模板xml
+        /// </summary>
+        XDocument templeteXml;
+        /// <summary>
+        /// 当前项目的xml
+        /// </summary>
         XDocument projectXml;
+        /// <summary>
+        /// 临时xml，用于自动保存
+        /// </summary>
         XDocument temporaryProjectXml;
 
         #region 单例

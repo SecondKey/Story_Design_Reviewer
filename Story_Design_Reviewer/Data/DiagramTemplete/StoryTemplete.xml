@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<StoryTempleet>
+  <TempleteInfo MainTimeLine="true" CheckError="true"/>
+  <!--模板的所有元素
+  元素是基本单位，应主要对应一种节点
+  其他节点同样可以包含该元素，但不应使用同一种表示形式
+  （连接并不包含在其中）-->
+  <Element>
+    <EventElement>
+
+    </EventElement>
+    <SingleEventElement>
+
+    </SingleEventElement>
+    <SpecialEventElement>
+
+    </SpecialEventElement>
+    <Role>
+
+    </Role> 
+    <Camp>
+      
+    </Camp>
+    <Items>
+      
+    </Items>
+    <Place>
+      
+    </Place>
+  </Element>
+
+  <!--默认体系，其中所有的体系可以修改，但不可以删除
+  默认体系可以直接作为元素的属性在元素中添加，
+  需要在体系中定义默认的inspect显示模式
+  在inspect中，默认体系的属性会显示在元素的基本属性中-->
+  <CommonSystem>
+    <Time>
+
+    </Time>
+  </CommonSystem>
+
+  <!--模板的工作区域，分为页面和节点-->
+  <WorkingArea>
+    <!--页面规定了工作区中共有多少种页面
+    每个页面中应该包含有多种
+    当节点有多种表示形式时，未特殊说明时将使用全部的该类型节点
+    
+    当一个页面被指定为Diagram族的元素时，
+    应为其指定可用的连接的类型-->
+    <Page>
+      <EventPage type="DiagramWithRuler">
+
+      </EventPage>
+      <SimpleEventPage type="Diagram">
+
+      </SimpleEventPage>
+      <MapPage type="Map">
+
+      </MapPage>
+      <Role type="Multiple">
+
+      </Role>
+      <Items>
+        
+      </Items>
+      <System type="List">
+
+      </System>
+    </Page>
+    <!--页面中的节点
+    在信息上：一个节点应该包含一个或多个元素的信息以及节点的含义
+    在结构上：一个节点应该包含指向他的节点和他指向的节点的信息，以及他们中间连接的信息
+    如果连接结构被设置成元素的形式，节点应该可以直接访问该元素（引用）
+    -->
+    <Node>
+      <EventNode>
+
+      </EventNode>
+    </Node>
+  </WorkingArea>
+
+  <!--文本-->
+  <TempleteDataText>
+    <!--中文-->
+    <DataText_CN>
+      <!--基础的文本,直接显示在页面上-->
+      <CommonText>
+        <CommonSystem_Time>
+          时间
+        </CommonSystem_Time>
+      </CommonText>
+      <!--如果需要对基础的文本进行说明，写在这里，使用相同的名称访问-->
+      <Info>
+        <CommonSystem_Time>
+          标准的时间计算方式，可以在体系页面进行修改
+        </CommonSystem_Time>
+      </Info>
+      <!--如果模板包含错误信息及提示，写在这里-->
+      <Error>
+
+      </Error>
+    </DataText_CN>
+  </TempleteDataText>
+</StoryTempleet>

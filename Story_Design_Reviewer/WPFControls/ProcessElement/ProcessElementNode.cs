@@ -22,6 +22,15 @@ namespace Story_Design_Reviewer
     /// </summary>
     class ProcessElementNode : Node
     {
+        public ProcessElementNode(string type)
+        {
+            
+        }
+
+        public ProcessElementNode(ProcessElement target)
+        {
+            
+        }
         static ProcessElementNode()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ProcessElementNode), new FrameworkPropertyMetadata(typeof(ProcessElementNode)));

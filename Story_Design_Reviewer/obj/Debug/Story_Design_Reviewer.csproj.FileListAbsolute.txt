@@ -93,7 +93,11 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\MrAdvice.xml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ProcessElement\Event\ProcessEventNode.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\WorkingArea.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\WorkingArea.baml
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectExpander.baml
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectItem.baml
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectExpander.g.cs
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\InspectItem.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectExpander.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Inspect\Element\InspectItem.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartPage.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartPage.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartItemList.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartItemList.baml

@@ -232,6 +232,24 @@ namespace Story_Design_Reviewer
 
         #endregion
 
-        //public timeSystem
+        #region 模板数据
+
+        private Dictionary<string, string> templeteDataText;
+        public Dictionary<string, string> TempleteDataText
+        {
+            get { return templeteDataText; }
+            set 
+            {
+                templeteDataText = value;
+                RaisePropertyChanged(() => TempleteDataText);
+
+            }
+        }
+        void GetTempleteText()
+        {
+            TempleteDataText = RWXml.GetInstence().GetOneLayerAllElement("Language_" + Language);
+        }
+
+        #endregion
     }
 }
