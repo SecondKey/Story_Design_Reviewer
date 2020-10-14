@@ -10,6 +10,31 @@ using System.Windows.Interop;
 
 namespace Story_Design_Reviewer
 {
+    #region Msg
+    public enum AllAppMsg
+    {
+        #region Debug
+        ShowDebugText,
+        #endregion
+
+        #region AppSettings
+        ChangeLanguage,
+        #endregion
+
+        #region ElementOperation
+        DeleteOptions,
+
+        OnElementValueChange,
+        #endregion
+
+        #region UserControl
+        ChoiseEveneElement,
+        Undo,
+        Redo
+        #endregion
+    }
+    #endregion
+
     public class AppMsgCenter
     {
         public static void SendMsg(MsgBase tmp)

@@ -76,7 +76,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Controls\AppMessage.cs" />
+    <Compile Include="Controls\Data\Msg\AppMessage.cs" />
+    <Compile Include="Controls\Data\DataCenter\TemplateDataCenter.cs" />
+    <Compile Include="Controls\Data\RAD\App\RWAppDataBase.cs" />
+    <Compile Include="Controls\Data\RAD\App\RWMainXml.cs" />
+    <Compile Include="Controls\Data\RAD\Interface\iRADProjectObject.cs" />
+    <Compile Include="Controls\Data\RAD\Interface\iRADObject.cs" />
+    <Compile Include="Controls\Data\RAD\Interface\iRWAttribute.cs" />
+    <Compile Include="Controls\Data\RAD\RWDataBase.cs" />
     <Compile Include="Controls\ProcessElementControl.cs" />
     <Compile Include="Controls\Systen\StorySystemBase.cs" />
     <Compile Include="Controls\Error\ErrorCenter.cs" />
@@ -110,13 +117,13 @@
     <Compile Include="Models\Element\ProcessElement.cs" />
     <Compile Include="Models\Element\ProcessElementInDiagram.cs" />
     <Compile Include="ResourcesDictionaryEvents.cs" />
-    <Compile Include="Controls\AppDataCenter.cs" />
+    <Compile Include="Controls\Data\DataCenter\AppDataCenter.cs" />
     <Compile Include="ViewModel\DataViewModelBase.cs" />
     <Compile Include="ViewModel\MainViewModel\ErrorPageViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel\InspectViewModel.cs" />
     <Compile Include="ViewModel\InspectView\EventInspectViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel\MainWindowViewModel.cs" />
-    <Compile Include="Controls\RWXml.cs" />
+    <Compile Include="Controls\Data\RAD\App\RWAPPXml.cs" />
     <Compile Include="ViewModel\ElementViewModel\ProcessElementViewModel.cs" />
     <Compile Include="ViewModel\ElementViewModel\TimeAxisViewModel.cs" />
     <Compile Include="ViewModel\ViewModelInterface\IPretreatmentEvents.cs" />
@@ -232,7 +239,10 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Controls\Data\RAD\Project\" />
+    <Folder Include="Controls\Data\RAD\Template\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Data\AppData.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -258,7 +268,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\DiagramTemplete\StoryTemplete.xml" />
+    <Resource Include="Data\Templete\StoryTemplete.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MrAdvice.2.8.11\build\MrAdvice.targets" Condition="Exists('..\packages\MrAdvice.2.8.11\build\MrAdvice.targets')" />

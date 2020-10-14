@@ -10,19 +10,7 @@
   <Menu_Edit>编辑</Menu_Edit>
   <Menu_Project>项目</Menu_Project>
 
-  <ErrorPage_Tab_Error>错误</ErrorPage_Tab_Error>
-  <ErrorPage_Tab_Conflict>冲突</ErrorPage_Tab_Conflict>
-  <ErrorPage_Tab_Prompt>提示</ErrorPage_Tab_Prompt>
-  <ErrorPage_Tab_TODO>代办</ErrorPage_Tab_TODO>
-
-
-  <ErrorText_ErrorPath>错误位置：</ErrorText_ErrorPath>
-
-  <Error_LostMotivation>角色行为缺少动机：</Error_LostMotivation>
-  <ErrorInfo_LostMotivation>
-    <ElementName>角色：</ElementName>
-    <End>的行为缺少必要的动机！</End>
-  </ErrorInfo_LostMotivation>
+  
 
 
   <WorkingArea_Title_TimeShaft>时间轴</WorkingArea_Title_TimeShaft>

@@ -12,32 +12,6 @@ namespace Story_Design_Reviewer
 {
     #region StaticValue
 
-    #region Msg
-    public enum AllAppMsg
-    {
-        #region Debug
-        ShowDebugText,
-        #endregion
-
-        #region AppSettings
-        ChangeLanguage,
-        #endregion
-
-        #region ElementOperation
-        DeleteOptions,
-
-        OnElementValueChange,
-        #endregion
-
-        #region UserControl
-        ChoiseEveneElement,
-        Undo,
-        Redo
-        #endregion
-    }
-
-    #endregion
-
     #region Type
     /// <summary>
     /// 撤销重做类型
@@ -115,22 +89,23 @@ namespace Story_Design_Reviewer
 
     #endregion
 
-    public class AppDataCenter : ObservableObject
+    class AppDataCenter : ObservableObject
     {
         #region 变量
+        /// <summary>
+        /// 程序本身的路径
+        /// </summary>
         public static string appPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Data/";
+        /// <summary>
+        /// 程序中心数据，包括版本等
+        /// </summary>
+        public RWMainXml mainAppXml;
+        public Dictionary<string, iRADObject> AllAppData = new Dictionary<string, iRADObject>();
+
         #endregion
 
         #region 单例/加载
         private static AppDataCenter instence = null;
-        private AppDataCenter()
-        {
-            AppMsgCenter.SendMsg(new MsgDebugText(AllAppMsg.ShowDebugText, DebugTools.DebugList.App, DebugTools.DebugType.Log, appPath));
-
-            GetLanguage();
-            GetLayOutSettings();
-            GetInterfaceColor();
-        }
         public static AppDataCenter GetInstence()
         {
             if (instence == null)
@@ -138,6 +113,46 @@ namespace Story_Design_Reviewer
                 instence = new AppDataCenter();
             }
             return instence;
+        }
+        private AppDataCenter()
+        {
+            AppMsgCenter.SendMsg(new MsgDebugText(AllAppMsg.ShowDebugText, DebugTools.DebugList.App, DebugTools.DebugType.Log, appPath));
+
+            mainAppXml = new RWMainXml(appPath, "AppData.xml");
+
+            foreach (var path in mainAppXml.GetDoubleLayerOneAttribute("Load", "type"))
+            {
+                foreach (var file in path.Value)
+                {
+                    if (file.Value == "xml")
+                    {
+                        AllAppData.Add(file.Key, new RWAPPXml(path.Key, file.Key + ".xml"));
+                    }
+                    else
+                    {
+                        AllAppData.Add(file.Key, new RWAppDataBase(path.Key, file.Key + ".db"));
+                    }
+                }
+            }
+
+            //allAppXml.Add("AppData", AppData);
+            //foreach (string folder in GetAllLayer("AppData", "LoadPath"))
+            //{
+            //    DirectoryInfo loadDir = new DirectoryInfo(path + folder);
+            //    foreach (FileInfo f in loadDir.EnumerateFiles())
+            //    {
+            //        XDocument xDoc = XDocument.Load(f.FullName);
+            //        allAppXml.Add(folder + "_" + Path.GetFileNameWithoutExtension(f.Name), xDoc);
+            //    }
+            //}
+
+            GetLanguage();
+            GetLayOutSettings();
+            GetInterfaceColor();
+        }
+        void LoadAppData()
+        {
+
         }
         #endregion
 
@@ -157,7 +172,7 @@ namespace Story_Design_Reviewer
         }
         void GetDataText()
         {
-            AppDataText = RWXml.GetInstence().GetOneLayerAllElement("Language_" + Language);
+            AppDataText = AllAppData["Language_" + Language].GetOneLayerElements();
         }
         #endregion
 
@@ -179,7 +194,7 @@ namespace Story_Design_Reviewer
         }
         void GetLanguage()
         {
-            Language = RWXml.GetInstence().GetOneElement("AppData", "Settings", "Language");
+            Language = mainAppXml.GetOneElement("Settings", "Language");
         }
 
         /// <summary>
@@ -197,7 +212,7 @@ namespace Story_Design_Reviewer
         }
         void GetLayOutSettings()
         {
-            Dictionary<string, string> settings = RWXml.GetInstence().GetOneLayerAllElement("AppData", "Settings", "LayOut");
+            Dictionary<string, string> settings = mainAppXml.GetOneLayerElements("AppData", "Settings", "LayOut");
             Dictionary<string, float> tmp = new Dictionary<string, float>();
             foreach (var kv in settings)
             {
@@ -221,33 +236,13 @@ namespace Story_Design_Reviewer
         }
         void GetInterfaceColor()
         {
-            Dictionary<string, string> settings = RWXml.GetInstence().GetOneLayerAllElement("AppData", "Settings", "AppColor");
+            Dictionary<string, string> settings = mainAppXml.GetOneLayerElements("AppData", "Settings", "AppColor");
             Dictionary<string, Color> tmp = new Dictionary<string, Color>();
             foreach (var kv in settings)
             {
                 tmp.Add(kv.Key, (Color)ColorConverter.ConvertFromString(kv.Value));
             }
             InterfaceColor = tmp;
-        }
-
-        #endregion
-
-        #region 模板数据
-
-        private Dictionary<string, string> templeteDataText;
-        public Dictionary<string, string> TempleteDataText
-        {
-            get { return templeteDataText; }
-            set 
-            {
-                templeteDataText = value;
-                RaisePropertyChanged(() => TempleteDataText);
-
-            }
-        }
-        void GetTempleteText()
-        {
-            TempleteDataText = RWXml.GetInstence().GetOneLayerAllElement("Language_" + Language);
         }
 
         #endregion

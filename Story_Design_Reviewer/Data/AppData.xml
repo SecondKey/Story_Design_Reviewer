@@ -16,7 +16,11 @@
     </AppColor>
   </Settings>
 
-  <LoadPath>
-    <Language/>
-  </LoadPath>
+  <Load>
+    <Language>
+      <Language_EN type="xml"/>
+      <Language_CN type="xml"/>
+      <Language_JP type="db"/>
+    </Language>
+  </Load>
 </AppData>
