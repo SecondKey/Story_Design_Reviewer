@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\App.xaml
-13453592062
+141078610722
 
-61-563406221
-125-551218945
-Controlsdictionary.xaml;DebugTools\DebugWindow.xaml;WPFControls\WorkingArea\FLowChart\FlowChartItemList.xaml;WPFControls\WorkingArea\FLowChart\FlowChartPage.xaml;MainWindow.xaml;Themes\Generic.xaml;WPFControls\ErrorListPanel.xaml;WPFControls\InspectPage.xaml;WPFControls\Inspect\Element\InspectExpander.xaml;WPFControls\Inspect\EventInspectPanel.xaml;WPFControls\Inspect\Element\InspectItem.xaml;WPFControls\ProcessElement\Event\ProcessEventNode.xaml;WPFControls\WorkingArea\WorkingArea.xaml;
+61-750587276
+132-1024714610
+AvalonDockPage.xaml;Controlsdictionary.xaml;DebugTools\DebugWindow.xaml;WPFControls\WorkingArea\FLowChart\FlowChartItemList.xaml;WPFControls\WorkingArea\FLowChart\FlowChartPage.xaml;MainWindow.xaml;Themes\Generic.xaml;WPFControls\ErrorListPanel.xaml;WPFControls\InspectPage.xaml;WPFControls\Inspect\Element\InspectExpander.xaml;WPFControls\Inspect\EventInspectPanel.xaml;WPFControls\Inspect\Element\InspectItem.xaml;WPFControls\ProcessElement\Event\ProcessEventNode.xaml;WPFControls\WorkingArea\WorkingArea.xaml;
 
-False
+True
 

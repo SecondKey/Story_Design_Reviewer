@@ -37,6 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aga.Diagrams">
+      <HintPath>C:\Users\22782\Desktop\dllPackage\Aga.Diagrams.dll</HintPath>
+    </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net47\CommonServiceLocator.dll</HintPath>
     </Reference>
@@ -55,6 +58,7 @@
     <Reference Include="PresentationFramework.Aero2" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -70,26 +74,47 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>C:\Users\22782\Desktop\dllPackage\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\22782\Desktop\dllPackage\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Expression, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\22782\Desktop\dllPackage\Xceed.Wpf.AvalonDock.Themes.Expression.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\22782\Desktop\dllPackage\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=2.0.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Users\22782\Desktop\dllPackage\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AvalonDockPage.xaml.cs">
+      <DependentUpon>AvalonDockPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Data\DataCenter\ProjectDataCenter.cs" />
     <Compile Include="Controls\Data\Msg\AppMessage.cs" />
     <Compile Include="Controls\Data\DataCenter\TemplateDataCenter.cs" />
-    <Compile Include="Controls\Data\RAD\App\RWAppDataBase.cs" />
-    <Compile Include="Controls\Data\RAD\App\RWMainXml.cs" />
     <Compile Include="Controls\Data\RAD\Interface\iRADProjectObject.cs" />
     <Compile Include="Controls\Data\RAD\Interface\iRADObject.cs" />
-    <Compile Include="Controls\Data\RAD\Interface\iRWAttribute.cs" />
+    <Compile Include="Controls\Data\RAD\LoadTemplatePackage.cs" />
     <Compile Include="Controls\Data\RAD\RWDataBase.cs" />
     <Compile Include="Controls\ProcessElementControl.cs" />
-    <Compile Include="Controls\Systen\StorySystemBase.cs" />
+    <Compile Include="Controls\Data\RAD\Interface\iTemplateSystem.cs" />
+    <Compile Include="Controls\System\StorySystemBase.cs" />
     <Compile Include="Controls\Error\ErrorCenter.cs" />
     <Compile Include="Controls\Error\ErrorProxy.cs" />
-    <Compile Include="Controls\EventTime.cs" />
-    <Compile Include="Controls\Systen\StorySystemItem.cs" />
+    <Compile Include="Controls\System\StorySystemItem.cs" />
     <Compile Include="Controls\UndoRedo\UndoRedoAdvice.cs" />
     <Compile Include="Controls\UndoRedo\UndoRedoController.cs" />
     <Compile Include="Controls\UndoRedo\UndoRedoProxy.cs" />
@@ -123,7 +148,7 @@
     <Compile Include="ViewModel\MainViewModel\InspectViewModel.cs" />
     <Compile Include="ViewModel\InspectView\EventInspectViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel\MainWindowViewModel.cs" />
-    <Compile Include="Controls\Data\RAD\App\RWAPPXml.cs" />
+    <Compile Include="Controls\Data\RAD\RWXml.cs" />
     <Compile Include="ViewModel\ElementViewModel\ProcessElementViewModel.cs" />
     <Compile Include="ViewModel\ElementViewModel\TimeAxisViewModel.cs" />
     <Compile Include="ViewModel\ViewModelInterface\IPretreatmentEvents.cs" />
@@ -151,6 +176,10 @@
     <Compile Include="WPFControls\WorkingArea\WorkingArea.xaml.cs">
       <DependentUpon>WorkingArea.xaml</DependentUpon>
     </Compile>
+    <Page Include="AvalonDockPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controlsdictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,8 +269,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\Data\RAD\Project\" />
-    <Folder Include="Controls\Data\RAD\Template\" />
+    <Folder Include="Data\Package\" />
+    <Folder Include="Data\Templete\Story_Design_Reviewer\Package\" />
+    <Folder Include="WPFControls\Diagrams\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\AppData.xml">
@@ -262,13 +292,21 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Aga.Diagrams\Aga.Diagrams.csproj">
-      <Project>{988e94fb-0936-4b88-acb9-4f9ce80c8ac3}</Project>
-      <Name>Aga.Diagrams</Name>
-    </ProjectReference>
+    <Resource Include="Data\Templete\Story_Design_Reviewer\TemplateData.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Data\Templete\StoryTemplete.xml" />
+    <Resource Include="Data\Templete\Story_Design_Reviewer\Language\CN.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data\Language\JP.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicLibrary\BasicLibrary.csproj">
+      <Project>{1396c7ab-d92c-48dc-ab07-e0aad01b713a}</Project>
+      <Name>BasicLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MrAdvice.2.8.11\build\MrAdvice.targets" Condition="Exists('..\packages\MrAdvice.2.8.11\build\MrAdvice.targets')" />

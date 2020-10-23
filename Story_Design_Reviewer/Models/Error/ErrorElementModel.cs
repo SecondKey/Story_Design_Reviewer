@@ -28,29 +28,29 @@ namespace Story_Design_Reviewer
 
         string ErrorTypeText(ErrorType type)
         {
-            return RWXml.GetInstence().GetOneElement("Language_" + AppDataCenter.GetInstence().Language, "Error_" + type.ToString());
+            return TemplateDataCenter.GetInstence().TempleteDataText["Error_" + type.ToString()];
         }
 
         string ErrorInfoText(ErrorType type)
         {
-            string info = "";
-            foreach (var kv in RWXml.GetInstence().GetOneLayerAllElement("Language_" + AppDataCenter.GetInstence().Language, "ErrorInfo_" + type.ToString()))
-            {
-                info = info + kv.Value + GetElementInfo(kv.Key);
-            }
+            //string info = "";
+            //foreach (var kv in RWXml.GetInstence().GetOneLayerAllElement("Language_" + AppDataCenter.GetInstence().Language, "ErrorInfo_" + type.ToString()))
+            //{
+            //    info = info + kv.Value + GetElementInfo(kv.Key);
+            //}
 
-            string path = "";
-            List<string> pathList = element.GetElementPath(new List<string>());
-            for (int i = 0; i < pathList.Count; i++)
-            {
-                path = path + pathList[pathList.Count - i - 1] + "\n";
-            }
+            //string path = "";
+            //List<string> pathList = element.GetElementPath(new List<string>());
+            //for (int i = 0; i < pathList.Count; i++)
+            //{
+            //    path = path + pathList[pathList.Count - i - 1] + "\n";
+            //}
 
-            string tmp = info + "\n\n"
-                    + RWXml.GetInstence().GetOneElement("Language_" + AppDataCenter.GetInstence().Language, "ErrorText_ErrorPath")
-                    + "\n"
-                    + path;
-            return tmp;
+            //string tmp = info + "\n\n"
+            //        + RWXml.GetInstence().GetOneElement("Language_" + AppDataCenter.GetInstence().Language, "ErrorText_ErrorPath")
+            //        + "\n"
+            //        + path;
+            return null;
         }
 
         string GetElementInfo(string t)

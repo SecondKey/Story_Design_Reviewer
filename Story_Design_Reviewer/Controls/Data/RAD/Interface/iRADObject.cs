@@ -12,7 +12,7 @@ namespace Story_Design_Reviewer
         /// <summary>
         /// 加载一个文件
         /// </summary>
-        void LoadFile(string path,string name);
+        void LoadFile(string path, string name);
         #endregion
 
         #region 读取数据
@@ -25,22 +25,21 @@ namespace Story_Design_Reviewer
         /// </summary>
         /// <param name="parameter"></param>
         /// <returns></returns>
-        Dictionary<string, string> GetOneLayerElements(params string[] parameter);
+        Dictionary<string, string> GetOneLayerElements(params string[] parameters);
         /// <summary>
         /// 获取一个层下所有的层
         /// </summary>
-        /// <param name="parameter"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        List<string> GetAllLayer(params string[] parameter);
+        List<string> GetAllLayer(params string[] parameters);
         /// <summary>
         /// 获取一个层下所有的层中所有的元素
         /// </summary>
-        /// <param name="parameter"></param>
+        /// <param name="parameters"></param>
         /// <returns></returns>
-        Dictionary<string, Dictionary<string, string>> GetDoubleLayerElements(params string[] parameter);
+        Dictionary<string, Dictionary<string, string>> GetDoubleLayerElements(params string[] parameters);
 
-        int GetElementNum();
-        int GetLayerNum();
+        int GetElementNum(params string[] parameters);
         #endregion
     }
 }

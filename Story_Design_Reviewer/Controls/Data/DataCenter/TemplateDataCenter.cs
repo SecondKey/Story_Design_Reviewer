@@ -7,15 +7,34 @@ using System.Threading.Tasks;
 
 namespace Story_Design_Reviewer
 {
-    class TemplateDataCenter:ObservableObject
-    {
-        #region 变量
 
+    /// <summary>
+    /// 模板的数据核心
+    /// </summary>
+    class TemplateDataCenter : ObservableObject
+    {
+        #region 基本成员变量
+        /// <summary>
+        /// 模板的核心数据
+        /// </summary>
+        RWXml mainTemplateXml;
+        /// <summary>
+        /// 模板的全部数据
+        /// </summary>
+        Dictionary<string, iRADObject> allTemplateData = new Dictionary<string, iRADObject>();
+        /// <summary>
+        /// 模板要加载的dll
+        /// </summary>
+        Dictionary<string, LoadTemplatePackage> allPackage = new Dictionary<string, LoadTemplatePackage>();
+        /// <summary>
+        /// 模板要加载的系统
+        /// </summary>
+        Dictionary<string, iTemplateSystem> allSystem = new Dictionary<string, iTemplateSystem>();
         #endregion
 
         #region 单例/加载
         private static TemplateDataCenter instence;
-        public static TemplateDataCenter GetInstence() 
+        public static TemplateDataCenter GetInstence()
         {
             if (instence == null)
             {
@@ -23,7 +42,19 @@ namespace Story_Design_Reviewer
             }
             return instence;
         }
-        private TemplateDataCenter() { }
+        private TemplateDataCenter()
+        {
+            mainTemplateXml = new RWXml(AppDataCenter.GetInstence().templatePath, "TemplateData.xml");
+            foreach (var path in mainTemplateXml.GetDoubleLayerElements("Load", "Xml"))
+            {
+                foreach (var file in path.Value)
+                {
+                    allTemplateData.Add(file.Value, new RWXml(AppDataCenter.GetInstence().templatePath + path.Key, file.Key + ".xml"));
+                }
+            }
+
+            GetTempleteText();
+        }
         #endregion
 
         #region DataText
@@ -38,10 +69,10 @@ namespace Story_Design_Reviewer
 
             }
         }
-        //void GetTempleteText()
-        //{
-        //    TempleteDataText = RWXml.GetInstence().GetOneLayerAllElement("Language_" + AppDataCenter.GetInstence().Language);
-        //}
+        void GetTempleteText()
+        {
+            TempleteDataText = allTemplateData["Language_" + AppDataCenter.GetInstence().Language].GetOneLayerElements();
+        }
 
         #endregion
     }

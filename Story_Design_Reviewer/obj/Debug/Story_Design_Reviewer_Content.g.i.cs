@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/diagramtemplete/storytemplete.xml")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("data/templete/story_design_reviewer/language/cn.xml")]
 
 

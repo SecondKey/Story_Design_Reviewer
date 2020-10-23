@@ -24,8 +24,5 @@ namespace Story_Design_Reviewer
         {
             InitializeComponent();
         }
-
-
-
     }
 }

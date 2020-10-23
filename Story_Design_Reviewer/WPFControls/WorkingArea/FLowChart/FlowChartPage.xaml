@@ -4,13 +4,13 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Story_Design_Reviewer"
-             xmlns:diagrame="clr-namespace:Aga.Diagrams;assembly=Aga.Diagrams"
+             xmlns:diagram="clr-namespace:Aga.Diagrams;assembly=Aga.Diagrams"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800" >
 
     <UserControl.Resources>
         <DataTemplate x:Key="tabItemTemplete" >
-            <local:FlowChartItemList TypeList="{Binding }"/>
+            <local:FlowChartItemList TypeList="{Binding TestList}"/>
         </DataTemplate>
     </UserControl.Resources>
     <DockPanel LastChildFill="True" Margin="-3">
@@ -25,10 +25,10 @@
             </Expander>
         </Border>
         <Border Style="{StaticResource PageBorder}">
-            <diagrame:DiagramScrollView>
-                <diagrame:DiagramView Name="diagrameView" ShowGrid="true" GridCellSize="10,10" DocumentSize="2000,2000" Zoom="1">
-                </diagrame:DiagramView>
-            </diagrame:DiagramScrollView>
+            <diagram:DiagramScrollView>
+                <diagram:DiagramView Name="diagrameView" ShowGrid="true" GridCellSize="10,10" DocumentSize="2000,2000" Zoom="1">
+                </diagram:DiagramView>
+            </diagram:DiagramScrollView>
         </Border>
     </DockPanel>
 </UserControl>

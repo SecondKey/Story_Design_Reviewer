@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Xceed.Wpf.AvalonDock.Layout.Serialization;
 
 namespace Story_Design_Reviewer
 {
@@ -26,8 +28,8 @@ namespace Story_Design_Reviewer
         public MainWindow()
         {
             InitializeComponent();
-            
         }
+
 
     }
 }

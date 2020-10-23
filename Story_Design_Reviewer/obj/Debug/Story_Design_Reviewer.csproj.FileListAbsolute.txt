@@ -86,7 +86,6 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Story_Design_Revie
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Themes\Generic.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\Controlsdictionary.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Aga.Diagrams.dll
-D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Aga.Diagrams.pdb
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\ProcessElement\Event\ProcessEventNode.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\MrAdvice.dll
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\MrAdvice.xml
@@ -101,3 +100,13 @@ D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\Workin
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartPage.baml
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartItemList.g.cs
 D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\WPFControls\WorkingArea\FLowChart\FlowChartItemList.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\AvalonDockPage.g.cs
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Xceed.Wpf.AvalonDock.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Expression.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\obj\Debug\AvalonDockPage.baml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\Data\Language\JP.xml
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\BasicLibrary.dll
+D:\SDRR\Story_Design_Reviewer\Story_Design_Reviewer\bin\Debug\BasicLibrary.pdb

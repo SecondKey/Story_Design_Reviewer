@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LayoutRoot xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <RootPanel Orientation="Horizontal">
+    <LayoutDocumentPaneGroup Orientation="Horizontal">
+      <LayoutDocumentPane>
+        <LayoutDocument Title="事件" IsSelected="True" IsLastFocusedDocument="True" ContentId="document" LastActivationTimeStamp="10/23/2020 19:15:49" />
+      </LayoutDocumentPane>
+    </LayoutDocumentPaneGroup>
+    <LayoutAnchorablePaneGroup Orientation="Horizontal" DockWidth="300">
+      <LayoutAnchorablePane>
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="解决方案" IsSelected="True" ContentId="Solution" LastActivationTimeStamp="10/23/2020 19:15:50" />
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="解决方案" ContentId="Solution" />
+        <LayoutAnchorable AutoHideMinWidth="100" AutoHideMinHeight="100" Title="属性" ContentId="Property" />
+      </LayoutAnchorablePane>
+    </LayoutAnchorablePaneGroup>
+  </RootPanel>
+  <TopSide />
+  <RightSide />
+  <LeftSide />
+  <BottomSide />
+  <FloatingWindows />
+  <Hidden />
+</LayoutRoot>

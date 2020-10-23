@@ -32,7 +32,7 @@
                 <MenuItem x:Name="Menu_Edit"  Header="{Binding AppDataText[Menu_Edit]}" />
                 <MenuItem x:Name="Menu_Project"  Header="{Binding AppDataText[Menu_Project]}" />
             </Menu>
-            <ToolBarTray DockPanel.Dock="Top" Background="Black">
+            <ToolBarTray DockPanel.Dock="Top" Background="White">
                 <ToolBar Style="{DynamicResource MainToolBarStyle}">
                     <Button Background="Black"></Button>
                     <Button Background="Black"></Button>
@@ -45,33 +45,9 @@
 
             <!--#endregion-->
 
-            <Grid x:Name="MainGrid" Margin="4,0,4,0" Background="White">
-                <!--#region 布局-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition MinWidth="100" MaxWidth="400" Width="{Binding LayOutSettings[ErrorPage_Width]}"/>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition />
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition MinWidth="200"  MaxWidth="400" Width="{Binding LayOutSettings[InspectePage_Width]}"/>
-                </Grid.ColumnDefinitions>
+            <local:AvalonDockPage>
 
-                <GridSplitter Grid.Column="1" Style="{StaticResource VerticalSplitter}"/>
-                <GridSplitter Grid.Column="3" Style="{StaticResource VerticalSplitter}"/>
-                <!--#endregion-->
-                <!--#region 错误面板-->
-
-                <local:ErrorListPanel/>
-                <!--#endregion-->
-
-                <!--#endregion-->
-
-                <!--#endregion-->
-                <!--#region 工作面板-->
-                <local:WorkingArea  Grid.Column="2" x:Name="WorkingArea"  Margin="-1"/>
-
-                <!--#region 检视面板-->
-                <local:InspectPage Grid.Column="4"/>
-            </Grid>
+            </local:AvalonDockPage>
         </DockPanel>
     </Grid>
 </Window>

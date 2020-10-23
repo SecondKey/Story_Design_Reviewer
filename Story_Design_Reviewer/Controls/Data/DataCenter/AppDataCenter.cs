@@ -89,19 +89,33 @@ namespace Story_Design_Reviewer
 
     #endregion
 
+    /// <summary>
+    /// app的数据核心
+    /// </summary>
     class AppDataCenter : ObservableObject
     {
-        #region 变量
+        #region 公共数据
         /// <summary>
         /// 程序本身的路径
         /// </summary>
-        public static string appPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Data/";
+        public string appPath = AppDomain.CurrentDomain.SetupInformation.ApplicationBase + "Data/";
         /// <summary>
         /// 程序中心数据，包括版本等
         /// </summary>
-        public RWMainXml mainAppXml;
+        public RWXml mainAppXml;
+        /// <summary>
+        /// 程序的全部数据
+        /// </summary>
         public Dictionary<string, iRADObject> AllAppData = new Dictionary<string, iRADObject>();
+        #endregion
 
+        #region 运行时数据
+        /// <summary>
+        /// 当前选择的模板
+        /// </summary>
+        public string choiseTemplate;
+
+        public string templatePath;
         #endregion
 
         #region 单例/加载
@@ -118,44 +132,23 @@ namespace Story_Design_Reviewer
         {
             AppMsgCenter.SendMsg(new MsgDebugText(AllAppMsg.ShowDebugText, DebugTools.DebugList.App, DebugTools.DebugType.Log, appPath));
 
-            mainAppXml = new RWMainXml(appPath, "AppData.xml");
+            mainAppXml = new RWXml(appPath, "AppData.xml");
 
-            foreach (var path in mainAppXml.GetDoubleLayerOneAttribute("Load", "type"))
+            foreach (var path in mainAppXml.GetDoubleLayerElements("Load"))
             {
                 foreach (var file in path.Value)
                 {
-                    if (file.Value == "xml")
-                    {
-                        AllAppData.Add(file.Key, new RWAPPXml(path.Key, file.Key + ".xml"));
-                    }
-                    else
-                    {
-                        AllAppData.Add(file.Key, new RWAppDataBase(path.Key, file.Key + ".db"));
-                    }
+                    AllAppData.Add(file.Value, new RWXml(appPath + path.Key, file.Key + ".xml"));
                 }
             }
-
-            //allAppXml.Add("AppData", AppData);
-            //foreach (string folder in GetAllLayer("AppData", "LoadPath"))
-            //{
-            //    DirectoryInfo loadDir = new DirectoryInfo(path + folder);
-            //    foreach (FileInfo f in loadDir.EnumerateFiles())
-            //    {
-            //        XDocument xDoc = XDocument.Load(f.FullName);
-            //        allAppXml.Add(folder + "_" + Path.GetFileNameWithoutExtension(f.Name), xDoc);
-            //    }
-            //}
 
             GetLanguage();
             GetLayOutSettings();
             GetInterfaceColor();
         }
-        void LoadAppData()
-        {
-
-        }
         #endregion
 
+        #region 程序数据
         #region DataText
         /// <summary>
         /// 文本数据
@@ -172,7 +165,7 @@ namespace Story_Design_Reviewer
         }
         void GetDataText()
         {
-            AppDataText = AllAppData["Language_" + Language].GetOneLayerElements();
+            AppDataText = AllAppData["AppText_" + Language].GetOneLayerElements();
         }
         #endregion
 
@@ -212,7 +205,7 @@ namespace Story_Design_Reviewer
         }
         void GetLayOutSettings()
         {
-            Dictionary<string, string> settings = mainAppXml.GetOneLayerElements("AppData", "Settings", "LayOut");
+            Dictionary<string, string> settings = mainAppXml.GetOneLayerElements("Settings", "LayOut");
             Dictionary<string, float> tmp = new Dictionary<string, float>();
             foreach (var kv in settings)
             {
@@ -236,7 +229,7 @@ namespace Story_Design_Reviewer
         }
         void GetInterfaceColor()
         {
-            Dictionary<string, string> settings = mainAppXml.GetOneLayerElements("AppData", "Settings", "AppColor");
+            Dictionary<string, string> settings = mainAppXml.GetOneLayerElements("Settings", "AppColor");
             Dictionary<string, Color> tmp = new Dictionary<string, Color>();
             foreach (var kv in settings)
             {
@@ -245,6 +238,7 @@ namespace Story_Design_Reviewer
             InterfaceColor = tmp;
         }
 
+        #endregion
         #endregion
     }
 }
